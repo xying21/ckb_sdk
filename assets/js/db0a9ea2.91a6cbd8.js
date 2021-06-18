@@ -1,0 +1,1 @@
+(self.webpackChunkckb_sdk=self.webpackChunkckb_sdk||[]).push([[134],{273:function(k){"use strict";k.exports=JSON.parse('{"allTagsPath":"/ckb_sdk/blog/tags","slug":"facebook","name":"facebook","count":1,"permalink":"/ckb_sdk/blog/tags/facebook"}')}}]);
