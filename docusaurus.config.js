@@ -1,13 +1,13 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'My Site',
-  tagline: 'Nervos CKB Developer Tools Documentation',
+  tagline: 'Documentation Test Site',
   url: 'https://github.com/xying21/ckb_sdk',
   baseUrl: '/ckb_sdk/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
+  organizationName: 'xying21', // Usually your GitHub org/user name.
   projectName: 'ckb_sdk', // Usually your repo name.
   themeConfig: {
     navbar: {

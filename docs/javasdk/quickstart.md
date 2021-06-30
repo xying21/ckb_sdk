@@ -2,22 +2,22 @@
 id: quickstart
 title: ckb-sdk-java
 ---
-This guide walk you through setting up a **Gradle** project to develop DApps with ckb-sdk-java. You can start from scratch and complete each step or you can bypass basic setup steps that are already familiar to you. 
+This guide walks you through setting up a Java project to develop DApps with ckb-sdk-java. 
+
+The project can be set up and built by using Gradle or Maven. You can start from scratch and complete each step or you can bypass basic setup steps that are already familiar to you. 
 
 ## System Requirements
 
 - Operating System:  All major platforms including Linux, Windows, and macOS.
 - CKB node
 - JDK (version 8 or higher)
-- Gradle ( version 5.0 or higher)
+- Gradle (version 5.0 or higher) or Maven
 
-## Steps
+## Install and Run a CKB Node on DEV Chain
 
-### Step 1. Install and Run a CKB Node on DEV Chain
+For more information, see [Install a CKB Node on DEV Chain by Using Tippy](https://cryptape.github.io/lumos-doc/docs/reference/ckbnode#install-a-ckb-node-by-using-tippy).
 
-For more information, see [Install a CKB Node on DEV Chain by Using Tippy](https://xying21.github.io/lumos_doc/docs/preparation/setupsystem#install-a-ckb-node-on-dev-chain-by-using-tippy).
-
-### Step 2. Get CKB Capacity for Test Accounts
+## Get CKB Capacity for Test Accounts
 
 There are several test accounts that can be used for testing purpose in this tutorial.
 
@@ -53,7 +53,9 @@ To get CKB capacity for an account on DEV chain:
 1. Assign the lock args of the account to **Block Assembler Lock Arg** in the Edit Chain form on Tippy explorer and save the changes.
 2. Restart the CKB node and start the CKB miner on the Tippy dashboard.
 
-### Step 3. Install JDK
+For more information about CKB accounts and capacity, see [CKB Accounts and Capacity](https://cryptape.github.io/lumos-doc/docs/reference/ckbaccount).
+
+## Install JDK
 
 Before developing CKB DApps by using ckb-sdk-java, you must have JDK installed. You can download the latest Java SE Development Kit software from http://www.oracle.com/technetwork/java/javase/downloads/. If you have JDK installed, proceed to the next step directly.
 
@@ -74,44 +76,30 @@ Before developing CKB DApps by using ckb-sdk-java, you must have JDK installed. 
    Java HotSpot(TM) 64-Bit Server VM (build 25.291-b10, mixed mode)
    ```
 
-### Step 4. Install Gradle
+## Set Up the Project by Using Gradle
 
 Gradle is an open-source build automation tool that can be used for building Java projects. Gradle runs on all major operating systems and requires only a JDK version 8 or higher to run.
 
-1. Install Gradle
+### Step 1. Install Gradle.
 
-   Follow the instructions on https://docs.gradle.org/current/userguide/installation.html to install Gradle for your system.
+Follow the instructions on https://docs.gradle.org/current/userguide/installation.html to install Gradle for your system.
 
-2. Check the installation
+To check the Gradle installation:
 
-   ```shell
-   > gradle -v
-   
-   Welcome to Gradle 7.0.2!
-   ...
-   ```
+```shell
+> gradle -v
 
-### Step 5. Create a Gradle Project
+Welcome to Gradle 7.0.2!
+...
+```
 
-1. Download the code examples.
+### Step 2. Create a Gradle project.
 
-   ```shell
-   > git clone https://github.com/nervosnetwork/ckb-sdk-java.git
-   ```
+Create the project folder, for example, `myDapp`, and copy the src folder of the code [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example) with all sub folders and files into the `myDapp` folder.
 
-   The examples are located in the `ckb-sdk-java/example` folder. 
+### Step 3. Set dependencies for CKB SDK.
 
-2. Create a new folder for the Gradle project.
-
-   ```shell
-   > mkdir myDapp
-   ```
-
-3. Copy the `src` folder together with all sub folders and files into the `myDapp` folder. 
-
-### Step 6. Set Dependencies for CKB SDK
-
-Specify the SDK modules to use in the `dependencies` section of the **build.gradle** file in the project root directory. For example, the following includes a dependency for CKB SDK.
+Specify the SDK modules to use in the `dependencies` section of the **build.gradle** file in the project root directory. For example, the following includes a dependency for CKB SDK 0.40.0 version.
 
 ```groovy title="myDapp/build.gradle"
 dependencies {
@@ -119,7 +107,7 @@ dependencies {
 }
 ```
 
-The following is an example of a complete `build.gradle` file that includes a dependency for CKB SDK.
+The following is an example of a complete `build.gradle` file that includes a dependency for CKB SDK 0.40.0 version.
 
 ```groovy title="myDapp/build.gradle"
 apply plugin: 'java'
@@ -135,7 +123,7 @@ jar {
 }
 ```
 
-### Step 7. Build the Application
+### Step 4. Build the application.
 
 To build the application by using Gradle:
 
@@ -147,14 +135,14 @@ To build the application by using Gradle:
    > gradle build
    ```
 
-### Step 8. Run a Main Method
+### Step 5. Run a main method.
 
-To run a main method:
+To run a main method of a Java class, for example, [RpcExample](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/example/src/main/java/org/nervos/ckb/RpcExample.java), by using Gradle:
 
-2. Update the `build.gradle` file.
+1. Update the `build.gradle` file.
 
-   The following example inserts the tasks in the `build.gradle` file to run the main method of the `RpcExample` class with the application plugin.
-   
+   The following example inserts the tasks in the `build.gradle` file to run the main method of the [RpcExample](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/example/src/main/java/org/nervos/ckb/RpcExample.java) class with the application plugin.
+
    ```groovy title="myDapp/build.gradle" {7-15}
    apply plugin: 'java'
    repositories { 
@@ -180,7 +168,7 @@ To run a main method:
        archiveVersion =  '0.1.0'
    }
    ```
-   
+
 2. Open a terminal or command prompt window and navigate to the project directory `myDapp`.
 
 3. Use the following command to run the application.
@@ -188,6 +176,111 @@ To run a main method:
    ```shell
    > gradle run
    ```
+
+   The execution of the main method of `RpcExample.class` returns the blockchain information like the tip block number and the tip block information.
+
+   <details><summary>OUTPUT</summary>
+   <p>
+
+   ```shell
+   > Task :run
+   Welcome to use SDK to visit CKB Blockchain
+   CKB Blockchain information: {"is_initial_block_download":false,"epoch":"0xa0004000012","difficulty":"0x100","median_time":"0x17a5b10a290","chain":"ckb_dev","alerts":[]}
+   
+   Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+   Use '--warning-mode all' to show the individual deprecation warnings.
+   See https://docs.gradle.org/7.0.2/userguide/command_line_interface.html#sec:command_line_warnings
+   ```
+
+   </p>
+   </details>
+
+## Set Up the Project by Using Maven
+
+### Step 1. Install Maven.
+
+Maven is downloadable as a zip file at <a>https://maven.apache.org/download.cgi</a>. Only the binaries are required, so look for the link to apache-maven-version-bin.zip or apache-maven-version-bin.tar.gz.
+
+Once you have downloaded the zip file, unzip it to your computer. Then add the **bin** folder to your path.
+
+To check the Maven installation:
+
+```shell
+mvn -v
+```
+
+For more information about the Maven installation, see [Installing Apache Maven](https://maven.apache.org/install.html).
+
+### Step 2. Create a Maven project.
+
+Create the project folder, for example, `myDapp`, and copy the src folder of the code [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example) with all sub folders and files into the `myDapp` folder.
+
+### Step 3. Set Dependencies for CKB SDK
+
+Specify the SDK modules to use in the `dependencies` section of the **pom.xml** file in the project root directory. For example, the following includes a dependency for CKB SDK 0.42.0 version.
+
+```groovy title="myDapp/pom.xml"
+<dependency>
+  <groupId>org.nervos.ckb</groupId>
+  <artifactId>ckb</artifactId>
+  <version>0.42.0</version>
+</dependency>
+```
+
+The following is an example of a complete `pom.xml` file that includes a dependency for CKB SDK.
+
+```xml title="myDapp/pom.xml"
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.nervos.ckb</groupId>
+    <artifactId>examples</artifactId>
+    <packaging>jar</packaging>
+    <version>0.1.0</version>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+	<dependencies>
+		<dependency>
+		  <groupId>org.nervos.ckb</groupId>
+		  <artifactId>ckb</artifactId>
+		  <version>0.42.0</version>
+		</dependency>
+	</dependencies>
+</project>
+```
+
+### Step 4. Run a Main Method
+
+To run a main method of a class, for example, [RpcExample](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/example/src/main/java/org/nervos/ckb/RpcExample.java) by using Maven:
+
+```shell
+$ mvn compile exec:java -Dexec.mainClass="org.nervos.ckb.RpcExample" -Dexec.cleanupDaemonThreads=false
+```
+
+The execution of the main method of `RpcExample.class` returns the blockchain information like the tip block number and the tip block information.
+
+<details><summary>OUTPUT</summary>
+<p>
+
+
+
+```shell
+...
+[INFO] --- exec-maven-plugin:3.0.0:java (default-cli) @ gs-maven ---
+Welcome to use SDK to visit CKB Blockchain
+CKB Blockchain information: {"is_initial_block_download":false,"epoch":"0xa0004000012","difficulty":"0x100","median_time":"0x17a5b10a290","chain":"ckb_dev","alerts":[]}
+...
+```
+
+</p>
+</details>
+
+## Write More Code
+
+With this quick introduction, you got a Java project created and performed a RPC query method. To write some more code, take a look at the Java examples.
 
 ## Examples
 

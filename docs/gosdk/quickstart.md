@@ -2,7 +2,7 @@
 id: quickstart
 title: ckb-sdk-go
 ---
-This guide walk you through setting up a **Go** project to develop DApps with ckb-sdk-go. You can start from scratch and complete each step or you can bypass basic setup steps that are already familiar to you. 
+This guide will walk you through setting up a Go project to develop DApps with ckb-sdk-go. You can start from scratch and complete each step or you can bypass basic setup steps that are already familiar to you. 
 
 ## System Requirements
 
@@ -10,13 +10,11 @@ This guide walk you through setting up a **Go** project to develop DApps with ck
 - CKB node
 - Go ( version 1.11.5 or higher)
 
-## Steps
+## Install and Run a CKB Node on DEV Chain
 
-### Step 1. Install and run a CKB node on DEV chain.
+For more information, see  [Install a CKB Node on DEV Chain by Using Tippy](https://cryptape.github.io/lumos-doc/docs/reference/ckbnode#install-a-ckb-node-by-using-tippy).
 
-For more information, see [Install a CKB Node on DEV Chain by Using Tippy](https://xying21.github.io/lumos_doc/docs/preparation/setupsystem#install-a-ckb-node-on-dev-chain-by-using-tippy).
-
-### Step 2. Get CKB capacity for test accounts.
+## Get CKB Capacity for Test Accounts
 
 There are several test accounts that can be used for testing purpose in this tutorial.
 
@@ -49,7 +47,7 @@ To get CKB capacity for Alice on DEV chain:
 1. Assign the lock args of Alice to **Block Assembler Lock Arg** in the Edit Chain form on Tippy explorer and save the changes.
 2. Restart the CKB node and start the CKB miner on the Tippy dashboard.
 
-### Step 3. Install Go.
+## Install Go
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -131,7 +129,7 @@ go version go1.16.4 windows/amd64
 </li></ol></TabItem>
 </Tabs>
 
-### Step 4. Create a Go project.
+## Create a Go Project
 
 <Tabs
   defaultValue="ubuntu"
@@ -186,7 +184,7 @@ $ cd mydapp
 </li></ol></TabItem>
 </Tabs>
 
-### Step 5. Enable dependency tracking for the code.
+## Enable Dependency Tracking for the Code
 
 When your code imports packages contained in other modules, you manage those dependencies through your code's own module. That module is defined by a go.mod file that tracks the modules that provide those packages. That go.mod file stays with your code, including in your source code repository.
 
@@ -199,7 +197,7 @@ $ go mod init github.com/mydapp
 go: creating new go.mod: module github.com/mydapp
 ```
 
-### Step 6. Create a <code>hello.go</code> file.
+## Create a <code>hello.go</code> File
 
 Paste the following code into the file and save the file.
 
@@ -302,7 +300,7 @@ func main() {
 }
 ```
 
-### Step 7. Add new modules for ckb-sdk-go.
+## Add New Modules for ckb-sdk-go.
 
 ```shell
 $ go mod tidy
@@ -398,7 +396,9 @@ go: downloading github.com/go-ole/go-ole v1.2.1
 </p>
 </details>
 
-### Step 8. Run your code to send the transaction with one single input.
+## Run the Code
+
+Run the code to send the transaction with one single input.
 
 ```shell
 $ go run .
@@ -425,7 +425,7 @@ The CKB miner must be running to commit the transaction.
 
 :::
 
-### Step 9. Write more code.
+## Write More Code
 
 With this quick introduction, you got a Go project created and performed a transaction with a single input. To write some more code, take a look at the .
 
