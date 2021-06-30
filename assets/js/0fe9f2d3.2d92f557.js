@@ -1,1 +1,0 @@
-(self.webpackChunkckb_sdk=self.webpackChunkckb_sdk||[]).push([[61],{591:function(s){"use strict";s.exports=JSON.parse('{"allTagsPath":"/ckb_sdk/blog/tags","slug":"hello","name":"hello","count":2,"permalink":"/ckb_sdk/blog/tags/hello"}')}}]);

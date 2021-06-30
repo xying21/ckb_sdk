@@ -1,1 +1,0 @@
-(self.webpackChunkckb_sdk=self.webpackChunkckb_sdk||[]).push([[823],{6353:function(e){"use strict";e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Welcome","permalink":"/ckb_sdk/blog/welcome"},{"title":"Hello","permalink":"/ckb_sdk/blog/hello-world"},{"title":"Hola","permalink":"/ckb_sdk/blog/hola"}]}')}}]);
