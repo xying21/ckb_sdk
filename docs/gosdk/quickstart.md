@@ -47,6 +47,8 @@ To get CKB capacity for Alice on DEV chain:
 1. Assign the lock args of Alice to **Block Assembler Lock Arg** in the Edit Chain form on Tippy explorer and save the changes.
 2. Restart the CKB node and start the CKB miner on the Tippy dashboard.
 
+For more information about CKB accounts and capacity, see [CKB Accounts and Capacity](https://cryptape.github.io/lumos-doc/docs/reference/ckbaccount).
+
 ## Install Go
 
 import Tabs from '@theme/Tabs';
@@ -199,7 +201,7 @@ go: creating new go.mod: module github.com/mydapp
 
 ## Create a <code>hello.go</code> File
 
-Paste the following code into the file and save the file.
+Create a hello.go file and paste the following code into the file.
 
 ```go title="mydapp/hello.go"
 package main
