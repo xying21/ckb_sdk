@@ -2,9 +2,9 @@
 id: quickstart
 title: ckb-sdk-java
 ---
-This guide walks you through setting up a Java project to develop DApps with ckb-sdk-java. 
+This guide walks you through setting up a project to develop DApps with **ckb-sdk-java**. With this quick introduction, you can get a Java project created and perform a RPC query method.
 
-The project can be set up and built by using Gradle or Maven. You can start from scratch and complete each step or you can bypass basic setup steps that are already familiar to you. 
+The project can be set up and built by using [Gradle](https://docs.gradle.org/current/userguide/what_is_gradle.html) or [Maven](https://maven.apache.org/what-is-maven.html). You can start from scratch and complete each step or you can bypass basic setup steps that are already familiar to you. To write some more code, take a look at the Java [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example).
 
 ## System Requirements
 
@@ -277,10 +277,6 @@ CKB Blockchain information: {"is_initial_block_download":false,"epoch":"0xa00040
 
 </p>
 </details>
-
-## Write More Code
-
-With this quick introduction, you got a Java project created and performed a RPC query method. To write some more code, take a look at the Java examples.
 
 ## Examples
 

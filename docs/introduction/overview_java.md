@@ -1,15 +1,15 @@
 ---
-id: overview
+id: overview_java
 title: Overview
-sidebar_label: Overview
+sidebar_label: ckb-sdk-java Overview
 ---
-CKB SDKs targeting at different programming languages encapsulate **cryptographic algorithms**, **RPC** and **smart contracts** to support developers to develop a CKB DApp quickly and easily.
-
-<!--These SDKs can enable the DApp to interact with a local or a remote CKB node more efficiently.-->
+CKB SDK integrates **CKB**, **CKB indexer** and **Mercury** that encapsulates cryptographic algorithms, RPC services to support the development of DApps like wallets, mining pools.
 
 :::note
 
 The knowledge of CKB Data Model (see [Nervos CKB Reference](https://docs.nervos.org/docs/reference/introduction) and [CKB RFC: CKB Data Structures](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md)) and [JSON-RPC](https://github.com/nervosnetwork/ckb/tree/develop/rpc) are must-have skills for developing DApps by using CKB SDKs.
+
+ckb-sdk-java is still under development and **NOT** production ready.
 
 :::
 
@@ -20,8 +20,7 @@ The knowledge of CKB Data Model (see [Nervos CKB Reference](https://docs.nervos.
 - Cryptocurrency management
 - Smart contracts deployment ?
 - Communication with CKB networks
-
-For more information, see [Supported Features](../introduction/features).
+- Token management. For more information, see Mercury.
 
 ## Programming Languages
 
@@ -41,14 +40,3 @@ CKB SDKs are implemented in these programming languages: Java, Go, JavaScript/Ty
 ## Contact & Support
 
 - 
-
-## References
-
-| Resource                          | Link                     |
-| --------------------------------- | ------------------------ |
-| Nervos&nbsp;Document&nbsp;Website | https://docs.nervos.org/ |
-| API&nbsp;Documentation            |                          |
-| Source&nbsp;Code                  |                          |
-| Tutorials                         |                          |
-| Video&nbsp;Lectures               |                          |
-
