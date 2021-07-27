@@ -32,7 +32,7 @@ module.exports = {
           title: 'Docs',
           items: [
 			{
-			  to: 'docs/introduction/overview',
+			  to: 'docs/introduction/overview_go',
 			  activeBasePath: 'docs',
 			  label: 'Docs',
 			  position: 'right',
