@@ -3,18 +3,11 @@ id: overview_go
 title: ckb-sdk-go
 sidebar_label: ckb-sdk-go
 ---
-ckb-sdk-go integrates **CKB**, **CKB indexer** and **Mercury**, and encapsulates cryptographic algorithms, RPC services to support the development of applications on CKB.
+ckb-sdk-go integrates the **CKB**, **CKB indexer** and **Mercury** module, and encapsulates cryptographic algorithms, RPC services to support the development of applications on CKB. The knowledge of CKB Data Model (see [Nervos CKB Reference](https://docs.nervos.org/docs/reference/introduction) and [CKB RFC: CKB Data Structures](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md)) and [JSON-RPC](https://github.com/nervosnetwork/ckb/tree/develop/rpc) are crucial for developing applications by using ckb-sdk-go.
 
-:::note
+ckb-sdk-go has started supporting the CKB indexer module since the indexer module was deprecated in [ckb_v0.36.0](https://github.com/nervosnetwork/ckb/releases/tag/v0.36.0). For more information about the CKB indexer, see the [Collect Cells](https://github.com/nervosnetwork/ckb-sdk-go#5-collect-cells) example.
 
-- ckb-sdk-go is still under development and **NOT** in production ready.
-
-- The knowledge of CKB Data Model (see [Nervos CKB Reference](https://docs.nervos.org/docs/reference/introduction) and [CKB RFC: CKB Data Structures](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md)) and [JSON-RPC](https://github.com/nervosnetwork/ckb/tree/develop/rpc) are crucial for developing applications by using CKB SDKs.
-
-- ckb-sdk-go has started supporting the CKB indexer module since the indexer module was deprecated in [ckb_v0.36.0](https://github.com/nervosnetwork/ckb/releases/tag/v0.36.0). For more information, see the [Collect Cells](https://github.com/nervosnetwork/ckb-sdk-go#5-collect-cells) example.
-
-
-:::
+For more information about the Mercury module, see the [Mercury](https://github.com/nervosnetwork/ckb-sdk-go/tree/develop/mercury/example) examples.
 
 ## Features
 
@@ -26,7 +19,7 @@ ckb-sdk-go integrates **CKB**, **CKB indexer** and **Mercury**, and encapsulates
 
 ## Contact & Support
 
-- 
+The SDK will be developed consistently. You can post comments regarding the functions of the SDK here. Any advice and suggestions are welcome and appreciated.
 
 ## Quick Start
 

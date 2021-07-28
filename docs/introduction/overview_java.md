@@ -3,15 +3,9 @@ id: overview_java
 title: ckb-sdk-java
 sidebar_label: ckb-sdk-java
 ---
-ckb-sdk-java integrates the **CKB**, **CKB indexer** and **Mercury** module, and encapsulates cryptographic algorithms, RPC services to support the development of applications on CKB.
+ckb-sdk-java integrates the **CKB**, **CKB indexer** and **Mercury** module, and encapsulates cryptographic algorithms, RPC services to support the development of applications on CKB. The knowledge of CKB Data Model (see [Nervos CKB Reference](https://docs.nervos.org/docs/reference/introduction) and [CKB RFC: CKB Data Structures](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md)) and [JSON-RPC](https://github.com/nervosnetwork/ckb/tree/develop/rpc) are crucial for developing applications by using ckb-sdk-java.
 
-:::note
-
-- ckb-sdk-java is still under development and **NOT** in production ready.
-- The knowledge of CKB Data Model (see [Nervos CKB Reference](https://docs.nervos.org/docs/reference/introduction) and [CKB RFC: CKB Data Structures](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md)) and [JSON-RPC](https://github.com/nervosnetwork/ckb/tree/develop/rpc) are crucial  skills for developing applications by using CKB SDKs.
-- ckb-sdk-java has started supporting the CKB indexer module since the indexer module was deprecated in [ckb_v0.36.0](https://github.com/nervosnetwork/ckb/releases/tag/v0.36.0). For more information about the CKB indexer module, see the [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example/src/main/java/org/nervos/ckb) of CKB indexer.
-
-:::
+ckb-sdk-java has started supporting the CKB indexer module since the indexer module was deprecated in [ckb_v0.36.0](https://github.com/nervosnetwork/ckb/releases/tag/v0.36.0). For more information about the CKB indexer module, see the [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example/src/main/java/org/nervos/ckb) of CKB indexer.
 
 ## Features
 
@@ -23,7 +17,7 @@ ckb-sdk-java integrates the **CKB**, **CKB indexer** and **Mercury** module, and
 
 ## Contact & Support
 
-- 
+The SDK will be developed consistently. You can post comments regarding the functions of the SDK here. Any advice and suggestions are welcome and appreciated.
 
 ## Quick Start
 
