@@ -3,9 +3,34 @@ id: overview_java
 title: ckb-sdk-java
 sidebar_label: ckb-sdk-java
 ---
-ckb-sdk-java integrates the **CKB**, **CKB indexer** and **Mercury** module, and encapsulates cryptographic algorithms, RPC services to support the development of applications on CKB. The knowledge of CKB Data Model (see [Nervos CKB Reference](https://docs.nervos.org/docs/reference/introduction) and [CKB RFC: CKB Data Structures](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md)) and [JSON-RPC](https://github.com/nervosnetwork/ckb/tree/develop/rpc) are crucial for developing applications by using ckb-sdk-java.
+- [Overview](#overview)
+- [Features](#features)
+- [License](#license)
+- [Changelog](#changelog)
+- [Contact & Support](#contact---support)
+- [Contribution](#contribution)
+- [Quick Start](#quick-start)
+  * [System Requirements](#system-requirements)
+  * [Install and Run a CKB Node on DEV Chain](#install-and-run-a-ckb-node-on-dev-chain)
+  * [Get CKB Capacity for Test Accounts](#get-ckb-capacity-for-test-accounts)
+  * [Install JDK](#install-jdk)
+  * [Set Up the Project by Using Gradle](#set-up-the-project-by-using-gradle)
+  * [Set Up the Project by Using Maven](#set-up-the-project-by-using-maven)
+- [Examples](#examples)
+  * [RPC Examples](#rpc-examples)
+  * [Single-sig Transfer](#single-sig-transfer)
+  * [Multi-sig Transfer](#multi-sig-transfer)
+  * [Issue and Transfer SUDT](#issue-and-transfer-sudt)
+  * [ACP Transaction](#acp-transaction)
+  * [Generate Addresses](#generate-addresses)
 
-ckb-sdk-java has started supporting the CKB indexer module since the indexer module was deprecated in [ckb_v0.36.0](https://github.com/nervosnetwork/ckb/releases/tag/v0.36.0). For more information about the CKB indexer module, see the [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example/src/main/java/org/nervos/ckb) of CKB indexer.
+## Overview
+
+CKB Java SDK (ckb-sdk-java) integrates the **CKB**, **CKB indexer** and **Mercury** module. It encapsulates cryptographic algorithms, RPC services to support the development of applications on [CKB](https://github.com/nervosnetwork/ckb). The knowledge of CKB Data Model (see [Nervos CKB Reference](https://docs.nervos.org/docs/reference/introduction) and [CKB RFC: CKB Data Structures](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md)) and [JSON-RPC](https://github.com/nervosnetwork/ckb/tree/develop/rpc) are crucial for developing applications by using ckb-sdk-java.
+
+CKB Java SDK has started supporting the CKB indexer module since the indexer module was deprecated in [ckb_v0.36.0](https://github.com/nervosnetwork/ckb/releases/tag/v0.36.0). For more information about the CKB indexer module, see the [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example/src/main/java/org/nervos/ckb) of CKB indexer.
+
+For more information about the Mercury module, see the Mercury examples.
 
 ## Features
 
@@ -15,13 +40,33 @@ ckb-sdk-java has started supporting the CKB indexer module since the indexer mod
 - Communication with CKB networks
 - Token management. For more information, see [Mercury](https://github.com/nervosnetwork/mercury).
 
+## License
+
+CKB Java SDK is available as an open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## Changelog
+
+For more information, see [CHANGELOG](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/CHANGELOG.md).
+
 ## Contact & Support
 
-The SDK will be developed consistently. You can post comments regarding the functions of the SDK here. Any advice and suggestions are welcome and appreciated.
+CKB Java SDK will be developed consistently. You can post comments regarding the functions of the SDK here. Any advice and suggestions are welcome and appreciated.
+
+## Contribution
+
+:::note
+
+CKB Java SDK uses [Google Java Code Format](https://google.github.io/styleguide/javaguide.html#s4.5-line-wrapping) and follows [Google Check Style](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml) for the development.
+
+If you encounter the `verifyGoogleJavaFormat FAILED` error when building your code for contributing to the SDK, format the code following [Google Java Code Format](https://google.github.io/styleguide/javaguide.html#s4.5-line-wrapping) or execute `./gradlew goJF` on macOS and Linux, or execute `gradlew goJF` on Windows.
+
+For the development by using IntelliJ IDEA, you can install `google-java-format` plugin to format the code automatically.
+
+:::
 
 ## Quick Start
 
-The following steps set up a project to develop applications with **ckb-sdk-java**. With this quick introduction, you can get a Java project created and perform a RPC query method.
+The following steps set up a project to develop applications with CKB Java SDK. With this quick introduction, you can get a Java project created and perform a RPC query method.
 
 The project can be set up and built by using [Gradle](https://docs.gradle.org/current/userguide/what_is_gradle.html) or [Maven](https://maven.apache.org/what-is-maven.html). You can start from scratch and complete each step or you can bypass basic setup steps that are already familiar to you. To write some more code, take a look at the Java [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example).
 
@@ -116,9 +161,16 @@ Welcome to Gradle 7.0.2!
 
 Create the project folder, for example, `myApp`, and copy the src folder of the code [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example) with all sub folders and files into the `myApp` folder.
 
-#### Step 3. Set dependencies for CKB SDK.
+#### Step 3. Install CKB Java SDK.
 
-Specify the SDK modules to use in the `dependencies` section of the **build.gradle** file in the project root directory. For example, the following includes a dependency for CKB SDK 0.40.0 version.
+There are two ways to install CKB Java SDK:
+
+- Install CKB Java SDK from repositories.
+- Install CKB Java SDK manually.
+
+**Install CKB Java SDK from Repositories**
+
+To install the SDK from repositories, specify the SDK modules to use in the `dependencies` section of the **build.gradle** file in the project root directory. For example, the following includes a dependency for CKB SDK 0.40.0 version. For more information about ckb-sdk-java versions, see [releases](https://github.com/nervosnetwork/ckb-sdk-java/releases).
 
 ```groovy title="myDapp/build.gradle"
 dependencies {
@@ -141,6 +193,28 @@ jar {
     archiveVersion =  '0.1.0'
 }
 ```
+
+**Install CKB Java SDK Manually**
+
+1. Build a JAR package
+
+   To build a JAR package (`console-{version}-all.jar` for version <= 0.24.0; `ckb-sdk-{version}-all.jar` for version >= 0.24.1):
+
+   ```
+   git clone https://github.com/nervosnetwork/ckb-sdk-java.git
+   
+   cd ckb-sdk-java
+   
+   gradle shadowJar  // ./gradlew shadowJar 
+   ```
+
+   The package will be generated in `console/build/libs`, that can be put into your project to develop with it. If you don't want to build the JAR package, you can download a build from [releases](https://github.com/nervosnetwork/ckb-sdk-java/releases).
+
+2. Import the JAR package
+
+   When you need to import `ckb-java-sdk` dependency to your project, you can add the `console-{version}-all.jar` or `ckb-sdk-{version}-all.jar` to your project `libs` package. 
+
+   If you use Java IDE (eg. IntelliJ IDEA or Eclipse or other Editors), you can import the JAR package according to IDE documents.
 
 #### Step 4. Build the application.
 
@@ -237,7 +311,7 @@ For more information about the Maven installation, see [Installing Apache Maven]
 
 Create the project folder, for example, `myApp`, and copy the src folder of the code [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example) with all sub folders and files into the `myApp` folder.
 
-#### Step 3. Set Dependencies for CKB SDK
+#### Step 3. Install CKB Java SDK.
 
 Specify the SDK modules to use in the `dependencies` section of the **pom.xml** file in the project root directory. For example, the following includes a dependency for CKB SDK 0.42.0 version.
 
@@ -303,16 +377,133 @@ CKB Blockchain information: {"is_initial_block_download":false,"epoch":"0xa00040
 
 ## Examples
 
-[RPC Examples](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/example/src/main/java/org/nervos/ckb/RpcExample.java):
+### RPC Examples
 
-- Get the Block Chain Information
-- Get the Current Block Number
-- Get the Current Block Information
+**CKB RPC**
 
-[DAO Examples](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/example/src/main/java/org/nervos/ckb/NervosDaoExample.java)
+- 
 
-[Transfer CKB to a Multisig Address](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/example/src/main/java/org/nervos/ckb/SendToMultiSigAddressTxExample.java)
+For more information about CKB RPC, see [CKB RPC documentation](https://github.com/nervosnetwork/ckb/blob/develop/rpc/README.md).
 
-[Transfer CKB to Multiple Receivers](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/example/src/main/java/org/nervos/ckb/SingleSigWithCkbIndexerTxExample.java)
+**Mercury RPC**
 
-[Transfer all Balance](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/example/src/main/java/org/nervos/ckb/TransferAllBalanceWithCkbIndexerExample.java)
+- [Get balance](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-mercury-sdk/src/test/java/mercury/BalanceTest.java)
+- [Get a generic block](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-mercury-sdk/src/test/java/mercury/GenericBlockTest.java)
+- [Get a generic transaction](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-mercury-sdk/src/test/java/mercury/GenericTransactionTest.java)
+- [Query generic transactions](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-mercury-sdk/src/test/java/mercury/QueryGenericTransactionsPagesTest.java)
+- [Register addresses](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-mercury-sdk/src/test/java/mercury/RegisterAddressesTest.java)
+- [Build a transfer transaction](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-mercury-sdk/src/test/java/mercury/TransferCompletionTest.java)
+- [Build a transfer transaction by action](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-mercury-sdk/src/test/java/mercury/ActionTest.java)
+- [Build a transfer transaction by source](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-mercury-sdk/src/test/java/mercury/SourceTest.java)
+- [Build a transfer transaction by a normal address (Example 1)](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-mercury-sdk/src/test/java/mercury/normal/AcpTest.java)
+- [Build a transfer transaction by a normal address (Example 2)](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-mercury-sdk/src/test/java/mercury/normal/ChequeTest.java)
+- [Build a transfer transaction by a normal address (Example 3)](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-mercury-sdk/src/test/java/mercury/normal/Secp256k1Test.java)
+- [Build an asset account creation transaction](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-mercury-sdk/src/test/java/mercury/BuildAssetCollectionTransactionTest.java)
+- [Build an asset collection transaction](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-mercury-sdk/src/test/java/mercury/CreateAssetAccountTest.java)
+- [Fee rate](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-mercury-sdk/src/test/java/mercury/FeeRateTest.java)
+
+For more information about Mercury RPC, see [Mercury RPC documentation](https://github.com/nervosnetwork/mercury/blob/main/core/rpc/README.md).
+
+**CKB Indexer RPC**
+
+- [Get tip](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-indexer/src/test/java/indexer/TipTest.java)
+- [Get cells](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-indexer/src/test/java/indexer/CellsTest.java)
+- [Get the capacity of cells](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-indexer/src/test/java/indexer/CapacityTest.java)
+- [Get transactions](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-indexer/src/test/java/indexer/TransactionTest.java)
+- [Filter](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-indexer/src/test/java/indexer/FilterTest.java)
+
+For more information about CKB indexer RPC, see [CKB indexer RPC documentation](https://github.com/nervosnetwork/ckb-indexer/blob/master/README.md).
+
+### Single-sig Transfer
+
+:::note
+
+To run a transfer example, the sender must have enough CKB capacity. For more information about getting CKB capacity, see Get CKB Capacity for Test Accounts.
+
+:::
+
+The [SingleSigWithCkbIndexerTxExample](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example/src/main/java/org/nervos/ckb/SingleSigWithCkbIndexerTxExample.java) example provides the `sendCapacity` method with inputs that belong to one single private key.
+
+The [MultiKeySingleSigTxExample](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example/src/main/java/org/nervos/ckb/MultiKeySingleSigTxExample.java) example provides the `sendCapacity` method with inputs that belong to one or multiple private keys.
+
+For more information, see [example/MultiKeySingleSigTxExample.java](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/example/src/main/java/org/nervos/ckb/MultiKeySingleSigTxExample.java).
+
+```java
+  Api api=new Api("your-ckb-node-url");
+
+        List<CellInput> inputs=Arrays.asList(
+        new CellInput(inputs1), // Input from address 'cktxxx', capacity 100 CKB
+        new CellInput(inputs2), // Input from address 'cktxxx', capacity 200 CKB
+        new CellInput(inputs3), // Input from address 'cktxxx', capacity 300 CKB
+        );
+
+        List<CellOutput> outputs=Arrays.asList(
+        output1, // Output to address 'cktxxx', capacity 200
+        output2, // Output to address 'cktxxx', capacity 300
+        output3, // Output to address 'cktxxx' as change, capacity 100
+        );
+
+        TransactionBuilder txBuilder=new TransactionBuilder(api);
+
+        SignatureBuilder signBuilder=new SignatureBuilder(txBuilder.buildTx());
+
+        // A script group is defined as scripts that share the same hash.
+        for(ScriptGroup scriptGroup:scriptGroups){
+        signBuilder.sign(scriptGroup);
+        }
+
+        String hash=api.sendTransaction(signBuilder.buildTx());
+```
+
+### Multi-sig Transfer
+
+:::note
+
+To run a transfer example, the sender must have enough CKB capacity. For more information about getting CKB capacity, see Get CKB Capacity for Test Accounts.
+
+:::
+
+The [SendToMultiSigAddressTxExample](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example/src/main/java/org/nervos/ckb/SendToMultiSigAddressTxExample.java) example provides the `sendCapacity` method that a single-sig address sends capacity to a 2/3 format multi-sig address.
+
+The [MultiSignTransactionExample](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example/src/main/java/org/nervos/ckb/MultiSignTransactionExample.java) example provides the `sendCapacity` method that a 2/3 format multi-sig address sends capacity to a single-sig address.
+
+### Issue and Transfer SUDT
+
+:::note
+
+To run a transfer example, the sender must have enough CKB capacity. For more information about getting CKB capacity, see Get CKB Capacity for Test Accounts.
+
+:::
+
+The [SUDTExample](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example/src/main/java/org/nervos/ckb/SUDTExample.java) example provides the `issue` method to issue SUDT, and the `transfer` method to transfer SUDT.
+
+### ACP Transaction
+
+:::note
+
+To run a transfer example, the sender must have enough CKB capacity. For more information about getting CKB capacity, see Get CKB Capacity for Test Accounts.
+
+:::
+
+The [ACPTransactionExample](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example/src/main/java/org/nervos/ckb/ACPTransactionExample.java) example provides the `createACPCell` method  to create an ACP cell with SUDT, and a `transfer` method to transfer CKB and SUDT to an ACP address.
+
+### Generate Addresses
+
+You can generate a CKB address by using CKB Java SDK as follows:
+
+```
+// Generate a mainnet address with SECP256K1 and public blake160 hash
+String publicKey=
+        Sign.publicKeyFromPrivate(
+        Numeric.toBigInt(
+        "e79f3207ea4980b7fed79956d5934249ceac4751a4fae01a0f7c4a96884bc4e3"),
+        true)
+        .toString(16);
+        Script script=
+        new Script(
+        "0x9bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce8",
+        Hash.blake160(publicKey),
+        Script.TYPE);
+        String address=AddressGenerator.generate(Network.MAINNET,script);
+```
+
