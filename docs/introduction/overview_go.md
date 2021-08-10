@@ -36,11 +36,11 @@ sidebar_label: ckb-sdk-go
 
 ## Overview
 
-CKB Go SDK (ckb-sdk-go) integrates the **CKB**, **CKB indexer** and **Mercury** module. It encapsulates cryptographic algorithms, RPC services to support the development of applications on CKB. The knowledge of CKB Data Model (see [Nervos CKB Reference](https://docs.nervos.org/docs/reference/introduction) and [CKB RFC: CKB Data Structures](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md)) and [JSON-RPC](https://github.com/nervosnetwork/ckb/tree/develop/rpc) are crucial for developing applications by using ckb-sdk-go.
+CKB Go SDK (ckb-sdk-go) encapsulates cryptographic algorithms, RPC services to support the development of applications on CKB. The knowledge of CKB Data Model (see [Nervos CKB Reference](https://docs.nervos.org/docs/reference/introduction) and [CKB RFC: CKB Data Structures](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md)) and [JSON-RPC](https://github.com/nervosnetwork/ckb/tree/develop/rpc) are crucial for developing applications by using the SDK.
 
-ckb-sdk-go has started supporting the CKB indexer module since the indexer module was deprecated in [ckb_v0.36.0](https://github.com/nervosnetwork/ckb/releases/tag/v0.36.0). For more information about the CKB indexer, see the [Collect Cells](https://github.com/nervosnetwork/ckb-sdk-go#5-collect-cells) example.
+The SDK starts supporting the **CKB**, **CKB indexer** and **Mercury** module by using the [NewCkbApi](https://github.com/nervosnetwork/ckb-sdk-go/blob/b7b9eff4f48fb2f3020cb31c630eea17cbc77e81/api/api.go#L231) API since 0.43.1 version. For more information, see the [use_of_mercury_and_ckb_and_indexer_example.go](https://github.com/nervosnetwork/ckb-sdk-go/blob/develop/mercury/example/use_of_mercury_and_ckb_and_indexer_example.go) example.<!--The SDK has started supporting the CKB indexer module since the indexer module was deprecated in [ckb_v0.36.0](https://github.com/nervosnetwork/ckb/releases/tag/v0.36.0). For more information about the CKB indexer, see the [Collect Cells](https://github.com/nervosnetwork/ckb-sdk-go#5-collect-cells) example.-->
 
-For more information about the Mercury module, see the [Mercury](https://github.com/nervosnetwork/ckb-sdk-go/tree/develop/mercury/example) examples.
+<!--For more information about the Mercury module, see the [Mercury](https://github.com/nervosnetwork/ckb-sdk-go/tree/develop/mercury/example) examples.-->
 
 ## Features
 
@@ -52,7 +52,7 @@ For more information about the Mercury module, see the [Mercury](https://github.
 
 ## Contact & Support
 
-CKB Go SDK will be developed consistently. You can post comments regarding the functions of the SDK here. Any advice and suggestions are welcome and appreciated.
+CKB Go SDK will be developed consistently. You can post comments regarding the functions of the SDK [here](https://github.com/nervosnetwork/ckb-sdk-go/issues). Any advice and suggestions are welcome and appreciated.
 
 ## Quick Start
 
@@ -71,26 +71,6 @@ You can start from scratch and complete each step or you can bypass basic setup 
 For more information, see  [Install a CKB Node on DEV Chain by Using Tippy](https://cryptape.github.io/lumos-doc/docs/reference/ckbnode#install-a-ckb-node-by-using-tippy).
 
 ### Get CKB Capacity for Test Accounts
-
-<!--There are several test accounts that can be used for testing purpose in this tutorial.-->
-
-<!--Do **not** use these private keys, addresses and args elsewhere.-->
-
-<!--Alice {-->
-<!--PrivateKey: "0x08730a367dfabcadb805d69e0e613558d5160eb8bab9d6e326980c2c46a05db2",-->
-<!--Lock args: "0x6407c2ef9bd96e8e14ac4cd15d860e9331802172",-->
-<!--Address: "ckt1qyqxgp7za7dajm5wzjkye52asc8fxvvqy9eqlhp82g",-->
-<!--}-->
-<!--Bob {-->
-<!--Private Key: "0x670ac6ac1ce8004b4220f0fb024179461f11989ff4d446816f78813b80b9c696",-->
-<!--Lock Args: "0xecbe30bcf5c6b2f2d8ec2dd229a4603a7e206b99",-->
-<!--Address: "ckt1qyqwe03shn6udvhjmrkzm53f53sr5l3qdwvsytj4hs"-->
-<!--}-->
-<!--Charlie {-->
-<!--Private Key: "0xe79f3207ea4980b7fed79956d5934249ceac4751a4fae01a0f7c4a96884bc4e3",-->
-<!--Lock Args: "0x36c329ed630d6ce750712a477543672adab57f4c",-->
-<!--Address: "ckt1qyqrdsefa43s6m882pcj53m4gdnj4k440axqswmu83"-->
-<!--}-->
 
 To get CKB capacity for an account on DEV chain:
 
@@ -253,7 +233,7 @@ go: creating new go.mod: module github.com/myApp
 
 Create a hello.go file, paste the following code into the file and replace the keys, lock args, transaction hash with the ones that you have.
 
-```go title="mydapp/hello.go"
+```go title="myApp/hello.go"
 package main
 
 import (

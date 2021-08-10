@@ -26,11 +26,13 @@ sidebar_label: ckb-sdk-java
 
 ## Overview
 
-CKB Java SDK (ckb-sdk-java) integrates the **CKB**, **CKB indexer** and **Mercury** module. It encapsulates cryptographic algorithms, RPC services to support the development of applications on [CKB](https://github.com/nervosnetwork/ckb). The knowledge of CKB Data Model (see [Nervos CKB Reference](https://docs.nervos.org/docs/reference/introduction) and [CKB RFC: CKB Data Structures](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md)) and [JSON-RPC](https://github.com/nervosnetwork/ckb/tree/develop/rpc) are crucial for developing applications by using ckb-sdk-java.
+CKB Java SDK (ckb-sdk-java) encapsulates cryptographic algorithms, RPC services to support the development of applications on [CKB](https://github.com/nervosnetwork/ckb). The knowledge of CKB Data Model (see [Nervos CKB Reference](https://docs.nervos.org/docs/reference/introduction) and [CKB RFC: CKB Data Structures](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md)) and [JSON-RPC](https://github.com/nervosnetwork/ckb/tree/develop/rpc) are crucial for developing applications by using the SDK.
 
-CKB Java SDK has started supporting the CKB indexer module since the indexer module was deprecated in [ckb_v0.36.0](https://github.com/nervosnetwork/ckb/releases/tag/v0.36.0). For more information about the CKB indexer module, see the [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example/src/main/java/org/nervos/ckb) of CKB indexer.
+The SDK starts supporting the **CKB**, **CKB indexer** and **Mercury** module by using the [DefaultCkbApi](https://github.com/nervosnetwork/ckb-sdk-java/blob/455f866c6faf5f63c781e74edefac5f7426a4019/ckb-api/src/main/java/org/nervos/api/DefaultCkbApi.java#L54) API since 0.43.1 version. For more information, see [CkbApiTest.java](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-api/src/test/java/org/nervos/api/CkbApiTest.java).<!--The SDK has started supporting the CKB indexer module since the indexer module was deprecated in [ckb_v0.36.0](https://github.com/nervosnetwork/ckb/releases/tag/v0.36.0). For more information about the CKB indexer module, see the [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example/src/main/java/org/nervos/ckb) of CKB indexer.-->
 
-For more information about the Mercury module, see the Mercury examples.
+<!--For more information about the CKB indexer module, see the [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example/src/main/java/org/nervos/ckb) of CKB indexer.-->
+
+<!--For more information about the Mercury module, see the Mercury examples.-->
 
 ## Features
 
@@ -50,7 +52,7 @@ For more information, see [CHANGELOG](https://github.com/nervosnetwork/ckb-sdk-j
 
 ## Contact & Support
 
-CKB Java SDK will be developed consistently. You can post comments regarding the functions of the SDK here. Any advice and suggestions are welcome and appreciated.
+CKB Java SDK will be developed consistently. You can post comments regarding the functions of the SDK [here](https://github.com/nervosnetwork/ckb-sdk-java/issues). Any advice and suggestions are welcome and appreciated.
 
 ## Contribution
 
@@ -58,9 +60,9 @@ CKB Java SDK will be developed consistently. You can post comments regarding the
 
 CKB Java SDK uses [Google Java Code Format](https://google.github.io/styleguide/javaguide.html#s4.5-line-wrapping) and follows [Google Check Style](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml) for the development.
 
-If you encounter the `verifyGoogleJavaFormat FAILED` error when building your code for contributing to the SDK, format the code following [Google Java Code Format](https://google.github.io/styleguide/javaguide.html#s4.5-line-wrapping) or execute `./gradlew goJF` on macOS and Linux, or execute `gradlew goJF` on Windows.
+If you encounter the `verifyGoogleJavaFormat FAILED` error when building your code for contributing to the SDK, format the code following [Google Java Code Format](https://google.github.io/styleguide/javaguide.html#s4.5-line-wrapping), or execute `./gradlew goJF` on macOS and Linux or execute `gradlew goJF` on Windows.
 
-For the development by using IntelliJ IDEA, you can install `google-java-format` plugin to format the code automatically.
+For the development by using IntelliJ IDEA, you can install the `google-java-format` plugin to format the code automatically.
 
 :::
 
@@ -170,17 +172,35 @@ There are two ways to install CKB Java SDK:
 
 **Install CKB Java SDK from Repositories**
 
-To install the SDK from repositories, specify the SDK modules to use in the `dependencies` section of the **build.gradle** file in the project root directory. For example, the following includes a dependency for CKB SDK 0.40.0 version. For more information about ckb-sdk-java versions, see [releases](https://github.com/nervosnetwork/ckb-sdk-java/releases).
+To install the SDK from repositories, specify the SDK modules to use in the `dependencies` section of the **build.gradle** file in the project root directory. For more information about ckb-sdk-java versions, see [releases](https://github.com/nervosnetwork/ckb-sdk-java/releases).
 
-```groovy title="myDapp/build.gradle"
-dependencies {
-	implementation 'org.nervos.ckb:ckb:0.40.0'
-}
-```
+- CKB Java SDK version <= 0.24.0 can be installed by using the following code snippet in the build.gradle file.
+
+  ```groovy title="myApp/build.gradle" {2}
+  dependencies {
+  	implementation 'org.nervos.ckb:core:{version}'
+  }
+  ```
+
+- CKB Java SDK version >= 0.24.1 and < 0.43.0 can be installed by using the following code snippet in the build.gradle file.
+
+  ```groovy title="myApp/build.gradle" {2}
+  dependencies {
+  	implementation 'org.nervos.ckb:ckb:{version}'
+  }
+  ```
+
+- CKB Java SDK version >= 0.43.0 can be installed by using the following code snippet in the build.gradle file.
+
+  ```groovy title="myApp/build.gradle" {2}
+  dependencies {
+  	implementation 'org.nervos.ckb:ckb-api:{version}'
+  }
+  ```
 
 The following is an example of a complete `build.gradle` file that includes a dependency for CKB SDK 0.40.0 version.
 
-```groovy title="myDapp/build.gradle"
+```groovy title="myApp/build.gradle"
 apply plugin: 'java'
 repositories { 
     mavenCentral() 
@@ -212,7 +232,7 @@ jar {
 
 2. Import the JAR package
 
-   When you need to import `ckb-java-sdk` dependency to your project, you can add the `console-{version}-all.jar` or `ckb-sdk-{version}-all.jar` to your project `libs` package. 
+   When you need to import `ckb-java-sdk` dependency to your project, you can add the `console-{version}-all.jar` or `ckb-sdk-{version}-all.jar` to the  `libs`  package of your project. 
 
    If you use Java IDE (eg. IntelliJ IDEA or Eclipse or other Editors), you can import the JAR package according to IDE documents.
 
@@ -236,7 +256,7 @@ To run a main method of a Java class, for example, [RpcExample](https://github.c
 
    The following example inserts the tasks in the `build.gradle` file to run the main method of the [RpcExample](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/example/src/main/java/org/nervos/ckb/RpcExample.java) class with the application plugin.
 
-   ```groovy title="myDapp/build.gradle" {7-15}
+   ```groovy title="myApp/build.gradle" {7-15}
    apply plugin: 'java'
    repositories { 
        mavenCentral()
@@ -313,19 +333,41 @@ Create the project folder, for example, `myApp`, and copy the src folder of the 
 
 #### Step 3. Install CKB Java SDK.
 
-Specify the SDK modules to use in the `dependencies` section of the **pom.xml** file in the project root directory. For example, the following includes a dependency for CKB SDK 0.42.0 version.
+Specify the SDK modules to use in the `dependencies` section of the **pom.xml** file in the project root directory.
 
-```groovy title="myDapp/pom.xml"
-<dependency>
-  <groupId>org.nervos.ckb</groupId>
-  <artifactId>ckb</artifactId>
-  <version>0.42.0</version>
-</dependency>
-```
+- CKB Java SDK version <= 0.24.0 can be installed by using the following code snippet in the build.gradle file.
+
+  ```groovy title="myApp/pom.xml" {3}
+  <dependency>
+    <groupId>org.nervos.ckb</groupId>
+    <artifactId>core</artifactId>
+    <version>{version}</version>
+  </dependency>
+  ```
+
+- CKB Java SDK version >= 0.24.1 and < 0.43.0 can be installed by using the following code snippet in the build.gradle file.
+
+  ```groovy title="myApp/pom.xml" {3}
+  <dependency>
+    <groupId>org.nervos.ckb</groupId>
+    <artifactId>ckb</artifactId>
+    <version>{version}</version>
+  </dependency>
+  ```
+
+- CKB Java SDK version >= 0.43.0 can be installed by using the following code snippet in the build.gradle file.
+
+  ```groovy title="myApp/pom.xml" {3}
+  <dependency>
+    <groupId>org.nervos.ckb</groupId>
+    <artifactId>ckb-api</artifactId>
+    <version>{version}</version>
+  </dependency>
+  ```
 
 The following is an example of a complete `pom.xml` file that includes a dependency for CKB SDK.
 
-```xml title="myDapp/pom.xml"
+```xml title="myApp/pom.xml"
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <modelVersion>4.0.0</modelVersion>
@@ -381,8 +423,6 @@ CKB Blockchain information: {"is_initial_block_download":false,"epoch":"0xa00040
 
 **CKB RPC**
 
-- 
-
 For more information about CKB RPC, see [CKB RPC documentation](https://github.com/nervosnetwork/ckb/blob/develop/rpc/README.md).
 
 **Mercury RPC**
@@ -427,33 +467,6 @@ The [SingleSigWithCkbIndexerTxExample](https://github.com/nervosnetwork/ckb-sdk-
 The [MultiKeySingleSigTxExample](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example/src/main/java/org/nervos/ckb/MultiKeySingleSigTxExample.java) example provides the `sendCapacity` method with inputs that belong to one or multiple private keys.
 
 For more information, see [example/MultiKeySingleSigTxExample.java](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/example/src/main/java/org/nervos/ckb/MultiKeySingleSigTxExample.java).
-
-```java
-  Api api=new Api("your-ckb-node-url");
-
-        List<CellInput> inputs=Arrays.asList(
-        new CellInput(inputs1), // Input from address 'cktxxx', capacity 100 CKB
-        new CellInput(inputs2), // Input from address 'cktxxx', capacity 200 CKB
-        new CellInput(inputs3), // Input from address 'cktxxx', capacity 300 CKB
-        );
-
-        List<CellOutput> outputs=Arrays.asList(
-        output1, // Output to address 'cktxxx', capacity 200
-        output2, // Output to address 'cktxxx', capacity 300
-        output3, // Output to address 'cktxxx' as change, capacity 100
-        );
-
-        TransactionBuilder txBuilder=new TransactionBuilder(api);
-
-        SignatureBuilder signBuilder=new SignatureBuilder(txBuilder.buildTx());
-
-        // A script group is defined as scripts that share the same hash.
-        for(ScriptGroup scriptGroup:scriptGroups){
-        signBuilder.sign(scriptGroup);
-        }
-
-        String hash=api.sendTransaction(signBuilder.buildTx());
-```
 
 ### Multi-sig Transfer
 
