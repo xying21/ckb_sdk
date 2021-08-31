@@ -36,9 +36,9 @@ sidebar_label: ckb-sdk-go
 
 ## Overview
 
-CKB Go SDK (ckb-sdk-go) encapsulates cryptographic algorithms, RPC services to support the development of applications on CKB. The knowledge of CKB Data Model (see [Nervos CKB Reference](https://docs.nervos.org/docs/reference/introduction) and [CKB RFC: CKB Data Structures](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md)) and [JSON-RPC](https://github.com/nervosnetwork/ckb/tree/develop/rpc) are crucial for developing applications by using the SDK.
+CKB Go SDK (ckb-sdk-go) encapsulates cryptographic algorithms and RPC services to support the development of applications on CKB. The knowledge of CKB Data Model (see [Nervos CKB Reference](https://docs.nervos.org/docs/reference/introduction) and [CKB RFC: CKB Data Structures](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md)) and [JSON-RPC](https://github.com/nervosnetwork/ckb/tree/develop/rpc) are crucial in developing applications by using this SDK.
 
-The SDK starts supporting the **CKB**, **CKB indexer** and **Mercury** module by using the [NewCkbApi](https://github.com/nervosnetwork/ckb-sdk-go/blob/b7b9eff4f48fb2f3020cb31c630eea17cbc77e81/api/api.go#L231) API since 0.43.1 version. For more information, see the [use_of_mercury_and_ckb_and_indexer_example.go](https://github.com/nervosnetwork/ckb-sdk-go/blob/develop/mercury/example/use_of_mercury_and_ckb_and_indexer_example.go) example.<!--The SDK has started supporting the CKB indexer module since the indexer module was deprecated in [ckb_v0.36.0](https://github.com/nervosnetwork/ckb/releases/tag/v0.36.0). For more information about the CKB indexer, see the [Collect Cells](https://github.com/nervosnetwork/ckb-sdk-go#5-collect-cells) example.-->
+The SDK uses the [NewCkbApi](https://github.com/nervosnetwork/ckb-sdk-go/blob/b7b9eff4f48fb2f3020cb31c630eea17cbc77e81/api/api.go#L231) API to support the **CKB**, **CKB indexer** and **Mercury** module starting from 0.43.1 version. For more information, see the [use_of_mercury_and_ckb_and_indexer_example.go](https://github.com/nervosnetwork/ckb-sdk-go/blob/develop/mercury/example/use_of_mercury_and_ckb_and_indexer_example.go) example.<!--The SDK has started supporting the CKB indexer module since the indexer module was deprecated in [ckb_v0.36.0](https://github.com/nervosnetwork/ckb/releases/tag/v0.36.0). For more information about the CKB indexer, see the [Collect Cells](https://github.com/nervosnetwork/ckb-sdk-go#5-collect-cells) example.-->
 
 <!--For more information about the Mercury module, see the [Mercury](https://github.com/nervosnetwork/ckb-sdk-go/tree/develop/mercury/example) examples.-->
 
@@ -52,13 +52,13 @@ The SDK starts supporting the **CKB**, **CKB indexer** and **Mercury** module by
 
 ## Contact & Support
 
-CKB Go SDK will be developed consistently. You can post comments regarding the functions of the SDK [here](https://github.com/nervosnetwork/ckb-sdk-go/issues). Any advice and suggestions are welcome and appreciated.
+CKB Go SDK is under continuous development. Comments on the functionality of the SDK can be posted [here](https://github.com/nervosnetwork/ckb-sdk-go/issues). Any comments and suggestions are welcome and appreciated.
 
 ## Quick Start
 
-The following steps set up a project to develop applications with **ckb-sdk-go**. With this quick introduction, you can get a Go project created and perform a transaction with a single input.
+A project is being setup in the following steps by using ckb-sdk-go to develop an application. With this quick introduction, you will be able to create a Go project and perform a transaction with a single input. 
 
-You can start from scratch and complete each step or you can bypass basic setup steps that are already familiar to you. 
+You can either start from scratch and work through each step, or you can bypass the basic setup process that you are already familiar with. 
 
 ### System Requirements
 
@@ -218,9 +218,9 @@ $ cd myApp
 
 ### Enable Dependency Tracking for the Code
 
-When your code imports packages contained in other modules, you manage those dependencies through your code's own module. That module is defined by a go.mod file that tracks the modules that provide those packages. That go.mod file stays with your code, including in your source code repository.
+When importing packages from other modules into your code, the dependencies are being managed through your code's own module.  That module is defined by a go.mod file that tracks the modules providing those packages. The go.mod file remains with your code and is included in your source code repository.
 
-To enable dependency tracking for your code by creating a go.mod file, run the [`go mod init`](https://golang.org/ref/mod#go-mod-init) command, giving it the name of the module your code will be in. The name is the module's module path. In most cases, this will be the repository location where your source code will be kept, such as `github.com/mymodule`. If you plan to publish your module for others to use, the module path *must* be a location from which Go tools can download your module.
+To enable dependency tracking for your code, the go.mod file would be created, run the [`go mod init`](https://golang.org/ref/mod#go-mod-init) command, and give it the name of the module your code will be in. This name is the module's module path. In most cases, this will be the repository location where your source code will be kept, such as `github.com/mymodule`. If you intend to publish your module for usage by others, the module path *must* be the location where Go tools can download your module.
 
 For the purposes of this tutorial, just use `github.com/myApp`.
 

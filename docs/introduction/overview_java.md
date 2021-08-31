@@ -26,9 +26,9 @@ sidebar_label: ckb-sdk-java
 
 ## Overview
 
-CKB Java SDK (ckb-sdk-java) encapsulates cryptographic algorithms, RPC services to support the development of applications on [CKB](https://github.com/nervosnetwork/ckb). The knowledge of CKB Data Model (see [Nervos CKB Reference](https://docs.nervos.org/docs/reference/introduction) and [CKB RFC: CKB Data Structures](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md)) and [JSON-RPC](https://github.com/nervosnetwork/ckb/tree/develop/rpc) are crucial for developing applications by using the SDK.
+CKB Java SDK (ckb-sdk-java) encapsulates cryptographic algorithms and RPC services to support the development of applications on [CKB](https://github.com/nervosnetwork/ckb). The knowledge of CKB Data Model (see [Nervos CKB Reference](https://docs.nervos.org/docs/reference/introduction) and [CKB RFC: CKB Data Structures](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md)) and [JSON-RPC](https://github.com/nervosnetwork/ckb/tree/develop/rpc) are crucial in developing applications by using this SDK.
 
-The SDK starts supporting the **CKB**, **CKB indexer** and **Mercury** module by using the [DefaultCkbApi](https://github.com/nervosnetwork/ckb-sdk-java/blob/455f866c6faf5f63c781e74edefac5f7426a4019/ckb-api/src/main/java/org/nervos/api/DefaultCkbApi.java#L54) API since 0.43.1 version. For more information, see [CkbApiTest.java](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-api/src/test/java/org/nervos/api/CkbApiTest.java).<!--The SDK has started supporting the CKB indexer module since the indexer module was deprecated in [ckb_v0.36.0](https://github.com/nervosnetwork/ckb/releases/tag/v0.36.0). For more information about the CKB indexer module, see the [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example/src/main/java/org/nervos/ckb) of CKB indexer.-->
+The SDK uses the [DefaultCkbApi](https://github.com/nervosnetwork/ckb-sdk-java/blob/455f866c6faf5f63c781e74edefac5f7426a4019/ckb-api/src/main/java/org/nervos/api/DefaultCkbApi.java#L54) API to support the **CKB**, **CKB indexer** and **Mercury** module starting from 0.43.1 version. For more information, see [CkbApiTest.java](https://github.com/nervosnetwork/ckb-sdk-java/blob/develop/ckb-api/src/test/java/org/nervos/api/CkbApiTest.java).<!--The SDK has started supporting the CKB indexer module since the indexer module was deprecated in [ckb_v0.36.0](https://github.com/nervosnetwork/ckb/releases/tag/v0.36.0). For more information about the CKB indexer module, see the [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example/src/main/java/org/nervos/ckb) of CKB indexer.-->
 
 <!--For more information about the CKB indexer module, see the [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example/src/main/java/org/nervos/ckb) of CKB indexer.-->
 
@@ -52,7 +52,7 @@ For more information, see [CHANGELOG](https://github.com/nervosnetwork/ckb-sdk-j
 
 ## Contact & Support
 
-CKB Java SDK will be developed consistently. You can post comments regarding the functions of the SDK [here](https://github.com/nervosnetwork/ckb-sdk-java/issues). Any advice and suggestions are welcome and appreciated.
+CKB Java SDK is under continuous development. Comments on the functionality of the SDK can be posted [here](https://github.com/nervosnetwork/ckb-sdk-java/issues). Any comments and suggestions are welcome and appreciated.
 
 ## Contribution
 
@@ -68,9 +68,9 @@ For the development by using IntelliJ IDEA, you can install the `google-java-for
 
 ## Quick Start
 
-The following steps set up a project to develop applications with CKB Java SDK. With this quick introduction, you can get a Java project created and perform a RPC query method.
+The following steps lay out a project to develop applications with CKB Java SDK. With this quick introduction, you can create a Java project and perform a RPC query method.
 
-The project can be set up and built by using [Gradle](https://docs.gradle.org/current/userguide/what_is_gradle.html) or [Maven](https://maven.apache.org/what-is-maven.html). You can start from scratch and complete each step or you can bypass basic setup steps that are already familiar to you. To write some more code, take a look at the Java [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example).
+The project can be set up and built by using [Gradle](https://docs.gradle.org/current/userguide/what_is_gradle.html) or [Maven](https://maven.apache.org/what-is-maven.html). You can either start from scratch and work through each step, or you can bypass the basic setup steps that you are already familiar with. To write more code, take a look at the Java [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example).
 
 ### System Requirements
 
@@ -85,7 +85,7 @@ For more information, see [Install a CKB Node on DEV Chain by Using Tippy](https
 
 ### Get CKB Capacity for Test Accounts
 
-There are several test accounts that can be used for testing purpose in this tutorial.
+Here are several test accounts that can be used for testing purpose in this tutorial.
 
 :::note
 
@@ -114,7 +114,7 @@ Address: ckt1qyqrdsefa43s6m882pcj53m4gdnj4k440axqswmu83
 }
 ```
 
-To get CKB capacity for an account on DEV chain:
+To obtain CKB capacity for an account on a DEV chain:
 
 1. Assign the lock args of the account to **Block Assembler Lock Arg** in the Edit Chain form on Tippy explorer and save the changes.
 2. Restart the CKB node and start the CKB miner on the Tippy dashboard.
@@ -123,7 +123,7 @@ For more information about CKB accounts and capacity, see [CKB Accounts and Capa
 
 ### Install JDK
 
-Before developing CKB applications by using ckb-sdk-java, you must have JDK installed. You can download the latest Java SE Development Kit software from http://www.oracle.com/technetwork/java/javase/downloads/. If you have JDK installed, proceed to the next step directly.
+Before developing CKB applications by using ckb-sdk-java, JDK must be installed. The latest Java SE Development Kit software can be downloaded from http://www.oracle.com/technetwork/java/javase/downloads/. If JDK is already installed, proceed to the next step directly.
 
 1. Download the JDK installer file on the download page, for example, [JDK 8 downloads](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html).
 
@@ -144,7 +144,7 @@ Before developing CKB applications by using ckb-sdk-java, you must have JDK inst
 
 ### Set Up the Project by Using Gradle
 
-Gradle is an open-source build automation tool that can be used for building Java projects. Gradle runs on all major operating systems and requires only a JDK version 8 or higher to run.
+Gradle is an open-source build automation tool for building Java projects. Gradle runs on all major operating systems and requires only JDK 8 or higher to run.
 
 #### Step 1. Install Gradle.
 
@@ -161,11 +161,11 @@ Welcome to Gradle 7.0.2!
 
 #### Step 2. Create a Gradle project.
 
-Create the project folder, for example, `myApp`, and copy the src folder of the code [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example) with all sub folders and files into the `myApp` folder.
+Create a project folder, for example, `myApp`, and copy the src folder of the code [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example) with all subfolders and files into the `myApp` folder.
 
 #### Step 3. Install CKB Java SDK.
 
-There are two ways to install CKB Java SDK:
+Two methods are available to install CKB Java SDK:
 
 - Install CKB Java SDK from repositories.
 - Install CKB Java SDK manually.
@@ -329,7 +329,7 @@ For more information about the Maven installation, see [Installing Apache Maven]
 
 #### Step 2. Create a Maven project.
 
-Create the project folder, for example, `myApp`, and copy the src folder of the code [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example) with all sub folders and files into the `myApp` folder.
+Create a project folder, for example, `myApp`, and copy the src folder of the code [examples](https://github.com/nervosnetwork/ckb-sdk-java/tree/develop/example) with all subfolders and files into the `myApp` folder.
 
 #### Step 3. Install CKB Java SDK.
 
