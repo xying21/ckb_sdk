@@ -5,13 +5,15 @@ sidebar_label: Godwoken
 ---
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
+## Overview
+
 **Godwoken** is a layer 2 rollup framework for Nervos CKB. It provides scaling capabilities with rollups that perform transaction execution outside CKB chain.
 
 Godwoken supports optimistic rollups that can use the always success script or [Proof of Authority](https://github.com/nervosnetwork/clerkb) to issue layer 2 blocks. When POA is used, limited `block_producers` can issue layer 2 blocks. For more information, see [Life of a Godwoken transaction](https://github.com/nervosnetwork/godwoken/blob/master/docs/life_of_a_godwoken_transaction.md#life-of-a-godwoken-transaction).
 
-Godwoken can support porting Ethereum DApps to CKB when it is integrated with Polyjuice. Polyjuice is an Ethereum compatible layer that allows Solidity based smart contracts to run on Nervos. Polyjuice uses [evmone](https://github.com/ethereum/evmone) as the EVM implementation in both `generator` and `validator`. It accepts Ethrereum transactions and execute the transactions in EVM. For more information, see [Polyjuice for Godwoken](https://github.com/nervosnetwork/godwoken-polyjuice) and [Life of a Polyjuice Transaction](https://github.com/nervosnetwork/godwoken/blob/master/docs/life_of_a_polyjuice_transaction.md).
+Godwoken can support porting Ethereum DApps to CKB when it is integrated with Polyjuice. Polyjuice is an Ethereum compatible layer that allows Solidity based smart contracts to run on Nervos. Polyjuice uses [evmone](https://github.com/ethereum/evmone) as the EVM implementation in both `generator` and `validator`. It accepts Ethereum transactions and execute the transactions in EVM. For more information, see [Polyjuice for Godwoken](https://github.com/nervosnetwork/godwoken-polyjuice) and [Life of a Polyjuice Transaction](https://github.com/nervosnetwork/godwoken/blob/master/docs/life_of_a_polyjuice_transaction.md).
 
-## How Does It Work?
+### Godwoken Aggregator Nodes
 
 Godwoken works by using **aggregator** nodes. The aggregator nodes are used to:
 
@@ -21,7 +23,131 @@ Godwoken works by using **aggregator** nodes. The aggregator nodes are used to:
 
 <img src={useBaseUrl("img/godwoken.png")}  width="70%"/>
 
-## Quickstart
+### Deployment
+
+Two deployment methods are provided to deploy a Godwoken with Polyjuice chain for different deployment requirements:
+
+- Deploy a Godwoken with Polyjuice chain by using Godwoken-kicker
+
+  Godwoken-kicker is a one line command to start a Godwoken with Polyjuice chain on **Devnet**. This deployment method can help developers deploy Ethereum contracts and migrate Ethereum DApps to CKB Devnet quickly in testing and development environments.
+
+- Deploy a Godwoken with Polyjuice chain manually
+
+  This deployment method is useful in situations such as deploying a Godwoken with Polyjuice chain on **Testnet**.
+
+## Deploy a Godwoken with Polyjuice Chain by Using Godwoken-Kicker
+
+Godwoken-kicker provides a quick mode and a custom mode for the deployment.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs
+  defaultValue="quick"
+  values={[
+    {label: 'Quick Mode', value: 'quick'},
+    {label: 'Custom Mode', value: 'custom'},
+  ]}>
+<TabItem value="quick"><p>The quick mode executes the builds of all components from prebuilt docker images. It's fast and simple.</p><b>Environment</b><p><ul><li>Ubuntu 20.04 LTS</li></ul></p><b>Prerequisites</b><p><ul><li><a href="https://docs.docker.com/engine/install/ubuntu/">Docker Engine</a></li><li><a href="https://docs.docker.com/compose/install/">Docker Compose</a></li></ul></p>
+
+<p><b>Steps</b></p>
+
+<ol>
+    <li><p>Set up an Ethereum wallet.</p><p>In this example, MetaMask (an Ethereum Wallet) is set up for the deployment.</p><p>Add the MetaMask extension in the browser (Firefox, Google Chrome, Brave or Microsoft Edge.) and create an account for the wallet.</p><p>If there is a wallet ready to be used, skip this step and go to Step 2 directly.</p></li>    
+<li>Clone the source of Godwoken-kicker.
+
+```bash
+$ git clone https://github.com/RetricSu/godwoken-kicker.git
+$ cd godwoken-kicker
+```
+
+</li>
+
+<li>Initialize Godwoken-kicker.
+
+```bash
+$ make init
+```
+
+The <code>make init</code> command can be used in the following situations:
+
+<ul><li>It is the first time to start the chain.</li>
+
+<li>The deployment mode is changed.</li>
+
+<li>The CKB chain data and all layer 1 related cache data are deleted.</li>
+
+</ul></li>
+
+<li>Start the Godwoken with Polyjuice chain.
+
+The <code>make start</code> command can be used to start the deployed Godwoken with Polyjuice chain. If there is no chain deployed, the <code>make start -f</code> command can be used for a force start that deploys and starts a new Godwoken with Polyjuice chain. 
+
+:::note
+
+Before starting the Godwoken with Polyjuice chain, ensure no other CKB chains are running.
+
+:::
+
+```bash
+$ make start
+```
+
+<details><summary>Output</summary>
+<p>
+
+
+
+```bash
+Building ckb
+Building polyjuice
+Building call-polyman
+Building godwoken
+Building web3
+Starting docker_postgres_1 ... done
+Starting docker_ckb_1      ... done
+Starting docker_polyjuice_1    ... done
+Starting docker_call-polyman_1 ... done
+Starting docker_indexer_1      ... done
+Starting docker_godwoken_1     ... done
+Starting docker_web3_1         ... done
+
+Run commands to monitor background activities: 
+
+    make sg (Godwoken)
+    make sp (Polyjuice)
+    make web3 (web3)
+    make call-polyman (setup service)
+
+All Jobs Done       : [########################################] 100%
+
+Great! Checkout http://localhost:6100 to deploy contract!
+```
+
+</p>
+</details>
+
+</li>
+
+<li>When the Godwoken chain is started successfully, open the website at <a>http://localhost:6100</a> and connect the MetaMask wallet by clicking the <b>Connect Wallet</b> button.</li>
+
+<!--<li><p>Connect the Godwoken chain in MetaMask.</p>
+
+<p>The New RPC URL (the web3 API of the Godwoken chain) and the Chain ID information can be found on the CHAIN INFO page at http://localhost:6100.</p>
+<p><ul><li>New RPC URL: http://localhost:8024</li><li>Chain ID: 1024777</li></ul></p></li>-->
+
+<li><p>Deploy an ETH contract to the Godwoken chain.</p><ol><li><p>Prepare and compile an ETH contract.</p></li>
+
+<li>Deposit 400 CKB to the ETH wallet on the <b>ACCOUNTS</b> page of the Godwoken chain.</li>
+
+<li>Deploy the ETH contract that you have compiled on the <b>CONTRACT</b> page of the Godwoken chain.</li></ol></li></ol>
+
+</TabItem>
+    <TabItem value="custom"><p>The custom mode can build all components from local packages and executes the builds locally. It's more flexible for custom requirements.</p><b>Environment</b><p><ul><li>Ubuntu 20.04 LTS</li></ul></p><b>Prerequisites</b><p><ul><li><a href="https://docs.docker.com/engine/install/ubuntu/">Docker Engine</a></li><li><a href="https://docs.docker.com/compose/install/">Docker Compose</a></li><li><a href="https://github.com/nervosnetwork/molecule">Moleculec</a></li><li>Rustup nightly</li></ul></p>
+</TabItem>
+</Tabs>
+
+## Deploy Godwoken Manually
 
 ### Environment
 
@@ -32,11 +158,11 @@ Godwoken works by using **aggregator** nodes. The aggregator nodes are used to:
 - [Capsule](https://github.com/nervosnetwork/capsule)
 - [Moleculec](https://github.com/nervosnetwork/molecule)
 
-- Rust nightly
+- Rustup nightly
 - Docker
 - A CKB node ( >= 0.40.0) is installed and running on DEV chain. For more information about installing a CKB node, see [Install a CKB Node by Using Tippy](https://cryptape.github.io/lumos-doc/docs/reference/ckbnode#install-a-ckb-node-by-using-tippy).
 
-### Deploy Godwoken
+### Steps
 
 #### Step 1. Build scripts
 
