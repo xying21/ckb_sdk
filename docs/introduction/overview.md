@@ -87,7 +87,7 @@ $ make init
 
 <li><p>Start the Godwoken chain.</p>
 
-<p>The <code>make start</code> command can be used to start the deployed Godwoken chain. If there is no chain deployed, the <code>make start -f</code> command can be used for a force start that deploys and starts a new Godwoken chain.</p>
+<p>The <code>make start</code> command can be used to start the deployed Godwoken chain. If there is no chain deployed, the <code>make start-f</code> command can be used for a force start that deploys and starts a new Godwoken chain.</p>
 
 ```bash
 $ make start
@@ -123,7 +123,12 @@ All Jobs Done       : [########################################] 100%
 
 Great! Checkout http://localhost:6100 to deploy contract!
 ```
+:::note
 
+Do note that after running <code>make clean<code>, run <code>make init<code> again if a reboot is desired.
+
+:::
+  
 </p>
 </details>
 
