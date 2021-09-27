@@ -7,23 +7,18 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 ## Overview
 
-**Godwoken** is a layer 2 rollup framework for Nervos CKB. It provides scaling capabilities with rollups that perform transaction execution outside CKB chain.
+- **Polyjuice**
 
+- **Godwoken** is a layer 2 rollup framework for Nervos CKB. It provides scaling capabilities with rollups that perform transaction execution outside CKB chain.
+
+- **Structural Architecture between Polyjuice and Godwoken** 
 Godwoken supports optimistic rollups that can use the always success script or [Proof of Authority](https://github.com/nervosnetwork/clerkb) to issue layer 2 blocks. When POA is used, limited `block_producers` can issue layer 2 blocks. For more information, see [Life of a Godwoken transaction](https://github.com/nervosnetwork/godwoken/blob/master/docs/life_of_a_godwoken_transaction.md#life-of-a-godwoken-transaction).
 
 When Godwoken is deployed with Polyjuice, it also supports porting Ethereum DApps to CKB. Polyjuice is an Ethereum compatible layer that allows Solidity based smart contracts to run on Nervos CKB. Polyjuice uses [evmone](https://github.com/ethereum/evmone) as the EVM implementation in both `generator` and `validator`. It accepts Ethereum transactions and executes the transactions in EVM. For more information, see [Polyjuice for Godwoken](https://github.com/nervosnetwork/godwoken-polyjuice) and [Life of a Polyjuice Transaction](https://github.com/nervosnetwork/godwoken/blob/master/docs/life_of_a_polyjuice_transaction.md). 
 
 For more information about the deployment of Godwoken, see the sections of [Deploy a Godwoken chain with Polyjuice by Using Godwoken-Kicker](godwoken#deploy-a-godwoken-chain-with-polyjuice-by-using-godwoken-kicker) and [Deploy Godwoken Manually](godwoken#deploy-godwoken-manually).
 
-### Godwoken Decentralization Roadmap
 
-- **Stage 1** (up to the mainnet release): The sequencer is the only validator. Godwoken supports to view rollups and find out whether there is any invalid commit in a rollup.
-
-- **Stage 2** (after the mainnet release): Godwoken will introduce permission-less validators. Then, everyone can run a validator to view rollups. If the sequencer commits an invalid state, a challenge will be processed, and the sequencer will lose staked assets on layer1. If the sequencer stops working, everyone can run a block producer to process the withdrawal from the rollup.
-
-  The target of stage 2 is to reach the same decentralization level as popular rollup projects such as Arbitrum.
-
-- **Stage 3**: Multiple sequencers will be investigated and explored.
 
 ### Godwoken Nodes
 
@@ -568,7 +563,15 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
       $ yarn run build:godwoken
       $ yarn run start
       ```
+## Godwoken Decentralization Roadmap
 
+- **Stage 1** (up to the mainnet release): The sequencer is the only validator. Godwoken supports to view rollups and find out whether there is any invalid commit in a rollup.
+
+- **Stage 2** (after the mainnet release): Godwoken will introduce permission-less validators. Then, everyone can run a validator to view rollups. If the sequencer commits an invalid state, a challenge will be processed, and the sequencer will lose staked assets on layer1. If the sequencer stops working, everyone can run a block producer to process the withdrawal from the rollup.
+
+  The target of stage 2 is to reach the same decentralization level as popular rollup projects such as Arbitrum.
+
+- **Stage 3**: Multiple sequencers will be investigated and explored.
 
 ## Project Examples
 
@@ -576,6 +579,7 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
 
 - [godwoken-simple](https://github.com/Kuzirashi/blockchain-workshop/tree/godwoken-simple)
 - [godwoken-simple-js](https://github.com/Kuzirashi/blockchain-workshop/tree/godwoken-simple-js)
+- [YokaiSwap](https://github.com/YokaiSwap)
 
 ## References
 
