@@ -12,43 +12,21 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 - **Godwoken** is a layer 2 rollup framework for Nervos CKB. It provides scaling capabilities with rollups that perform transaction execution outside CKB chain.
 
 - **Structural Architecture between Polyjuice and Godwoken** 
-Godwoken supports optimistic rollups that can use the always success script or [Proof of Authority](https://github.com/nervosnetwork/clerkb) to issue layer 2 blocks. When POA is used, limited `block_producers` can issue layer 2 blocks. For more information, see [Life of a Godwoken transaction](https://github.com/nervosnetwork/godwoken/blob/master/docs/life_of_a_godwoken_transaction.md#life-of-a-godwoken-transaction).
 
-When Godwoken is deployed with Polyjuice, it also supports porting Ethereum DApps to CKB. Polyjuice is an Ethereum compatible layer that allows Solidity based smart contracts to run on Nervos CKB. Polyjuice uses [evmone](https://github.com/ethereum/evmone) as the EVM implementation in both `generator` and `validator`. It accepts Ethereum transactions and executes the transactions in EVM. For more information, see [Polyjuice for Godwoken](https://github.com/nervosnetwork/godwoken-polyjuice) and [Life of a Polyjuice Transaction](https://github.com/nervosnetwork/godwoken/blob/master/docs/life_of_a_polyjuice_transaction.md). 
+- Repositories & Functions
 
-For more information about the deployment of Godwoken, see the sections of [Deploy a Godwoken chain with Polyjuice by Using Godwoken-Kicker](godwoken#deploy-a-godwoken-chain-with-polyjuice-by-using-godwoken-kicker) and [Deploy Godwoken Manually](godwoken#deploy-godwoken-manually).
+- Polyjuice Networks
 
+## Glossary
 
+## Applying Polyjuice
+- Quick Start(by using Testnet)
+  1. set up the environment
+  2. deploy a dapp to polyjuice
+- Tutorial
+- RPC Documentation
 
-### Godwoken Nodes
-
-Godwoken works by using **aggregator** nodes. 
-
-The nodes are used to:
-
-1. Collect specially designed layer 2 transactions.
-2. Pack the special transactions into CKB transactions that can also be considered as layer 2 blocks.
-3. Submit the CKB transactions to layer 1 for acceptance. **m** of **n** multisig keys are used to deploy on-chain cells to layer 1. Every update needs to be verified by the holders of the keys.
-
-<img src={useBaseUrl("img/godwoken.png")}  width="70%"/>
-
-
-
-Godwoken nodes have three modes:
-
-- **fullnode** mode: The Godwoken nodes in fullnode mode verify new blocks and transactions, relay blocks and transactions. The nodes are the verifiers of the network.
-
-  :::note
-
-  In the current stage, Godwoekn supports one single central node for producing blocks. To use fullnode mode Godwoken, a local DEV chain must be deployed for the development.
-
-  :::
-
-- **readonly** mode: By default, two readonly Godwoken nodes can be deployed in a deployment process. The two readonly nodes can synchronize the data of testnet or mainnet for queries.
-
-- **test** mode: Test mode is used for Godwoken internal test purpose.
-
-### Deployment
+## Deployment 
 
 Two deployment methods are provided for deploying a Godwoken chain with Polyjuice to fulfill different deployment requirements:
 
@@ -60,7 +38,7 @@ Two deployment methods are provided for deploying a Godwoken chain with Polyjuic
 
   This deployment method is useful in situations such as deploying a Godwoken chain with Polyjuice on **Testnet** or **Mainnet**.
 
-## Deploy a Godwoken Chain with Polyjuice by Using Godwoken-Kicker
+### Deploy a Godwoken Chain with Polyjuice by Using Godwoken-Kicker
 
 Godwoken-kicker provides a quick mode and a custom mode for the deployment.
 
@@ -280,13 +258,13 @@ Great! Checkout http://localhost:6100 to deploy contract!
 
 For more information about the Godwoken-kicker commands, see [godwoken-kicker](https://github.com/RetricSu/godwoken-kicker).
 
-## Deploy Godwoken Manually
+### Deploy Godwoken Manually
 
-### Environment
+#### Environment
 
 * OS: Ubuntu 20.04
 
-### Prerequisites
+#### Prerequisites
 
 The following tools need to be installed before entering the deployment process:
 
@@ -331,7 +309,7 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
 
 :::
 
-### Steps
+#### Steps
 
 1. Create a CKB account for the deployment.
 
@@ -563,6 +541,51 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
       $ yarn run build:godwoken
       $ yarn run start
       ```
+Godwoken supports optimistic rollups that can use the always success script or [Proof of Authority](https://github.com/nervosnetwork/clerkb) to issue layer 2 blocks. When POA is used, limited `block_producers` can issue layer 2 blocks. For more information, see [Life of a Godwoken transaction](https://github.com/nervosnetwork/godwoken/blob/master/docs/life_of_a_godwoken_transaction.md#life-of-a-godwoken-transaction).
+
+When Godwoken is deployed with Polyjuice, it also supports porting Ethereum DApps to CKB. Polyjuice is an Ethereum compatible layer that allows Solidity based smart contracts to run on Nervos CKB. Polyjuice uses [evmone](https://github.com/ethereum/evmone) as the EVM implementation in both `generator` and `validator`. It accepts Ethereum transactions and executes the transactions in EVM. For more information, see [Polyjuice for Godwoken](https://github.com/nervosnetwork/godwoken-polyjuice) and [Life of a Polyjuice Transaction](https://github.com/nervosnetwork/godwoken/blob/master/docs/life_of_a_polyjuice_transaction.md). 
+
+For more information about the deployment of Godwoken, see the sections of [Deploy a Godwoken chain with Polyjuice by Using Godwoken-Kicker](godwoken#deploy-a-godwoken-chain-with-polyjuice-by-using-godwoken-kicker) and [Deploy Godwoken Manually](godwoken#deploy-godwoken-manually).
+
+
+
+### Godwoken Nodes
+
+Godwoken works by using **aggregator** nodes. 
+
+The nodes are used to:
+
+1. Collect specially designed layer 2 transactions.
+2. Pack the special transactions into CKB transactions that can also be considered as layer 2 blocks.
+3. Submit the CKB transactions to layer 1 for acceptance. **m** of **n** multisig keys are used to deploy on-chain cells to layer 1. Every update needs to be verified by the holders of the keys.
+
+<img src={useBaseUrl("img/godwoken.png")}  width="70%"/>
+
+
+
+Godwoken nodes have three modes:
+
+- **fullnode** mode: The Godwoken nodes in fullnode mode verify new blocks and transactions, relay blocks and transactions. The nodes are the verifiers of the network.
+
+  :::note
+
+  In the current stage, Godwoekn supports one single central node for producing blocks. To use fullnode mode Godwoken, a local DEV chain must be deployed for the development.
+
+  :::
+
+- **readonly** mode: By default, two readonly Godwoken nodes can be deployed in a deployment process. The two readonly nodes can synchronize the data of testnet or mainnet for queries.
+
+- **test** mode: Test mode is used for Godwoken internal test purpose.
+
+
+## Project Examples
+
+- [Porting an Existing Ethereum DApp to Polyjuice](https://github.com/TTNguyenDev/Hackathon-Nervos/tree/main/task_12#document-porting-an-existing-ethereum-dapp-to-polyjuice)
+
+- [godwoken-simple](https://github.com/Kuzirashi/blockchain-workshop/tree/godwoken-simple)
+- [godwoken-simple-js](https://github.com/Kuzirashi/blockchain-workshop/tree/godwoken-simple-js)
+- [YokaiSwap](https://github.com/YokaiSwap)
+
 ## Godwoken Decentralization Roadmap
 
 - **Stage 1** (up to the mainnet release): The sequencer is the only validator. Godwoken supports to view rollups and find out whether there is any invalid commit in a rollup.
@@ -573,13 +596,6 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
 
 - **Stage 3**: Multiple sequencers will be investigated and explored.
 
-## Project Examples
-
-- [Porting an Existing Ethereum DApp to Polyjuice](https://github.com/TTNguyenDev/Hackathon-Nervos/tree/main/task_12#document-porting-an-existing-ethereum-dapp-to-polyjuice)
-
-- [godwoken-simple](https://github.com/Kuzirashi/blockchain-workshop/tree/godwoken-simple)
-- [godwoken-simple-js](https://github.com/Kuzirashi/blockchain-workshop/tree/godwoken-simple-js)
-- [YokaiSwap](https://github.com/YokaiSwap)
 
 ## References
 
