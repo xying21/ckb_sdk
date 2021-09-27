@@ -68,9 +68,9 @@ $ git clone https://github.com/RetricSu/godwoken-kicker.git
 <li><p>Initialize Godwoken-kicker.</p>
 
 :::note
-
-Stop any running Godwoken chain by using the <code>make stop</code> command before initializing Godwoken-kicker.
-
+  
+Stop any running Godwoken chain by using the <code>make stop</code> command before initializing Godwoken-kicker. 
+  
 :::
 
 ```bash
@@ -92,7 +92,11 @@ $ make init
 ```bash
 $ make start
 ```
-
+:::note
+  
+  Do note that after running <code>make clean</code>, run <code>make init</code> again if a reboot is desired. 
+  
+:::
 <details><summary>Output</summary>
 <p>
 
@@ -123,11 +127,6 @@ All Jobs Done       : [########################################] 100%
 
 Great! Checkout http://localhost:6100 to deploy contract!
 ```
-:::note
-
-Do note that after running <code>make clean<code>, run <code>make init<code> again if a reboot is desired.
-
-:::
   
 </p>
 </details>
