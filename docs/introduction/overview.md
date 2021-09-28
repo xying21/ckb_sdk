@@ -9,20 +9,20 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 Polyjuice is an EVM compatible layer that exposes an account model on top of the cell model of CKB. It supports Solidity based smart contracts to run on Nervos CKB. <!--Polyjuice uses [evmone](https://github.com/ethereum/evmone) as the EVM implementation in both generator and validator. It accepts Ethereum transactions and executes the transactions in EVM. For more information about Polyjuice transactions, see [Life of a Polyjuice Transaction](https://github.com/nervosnetwork/godwoken/blob/master/docs/life_of_a_polyjuice_transaction.md).-->
 
-The active development repository of Polyjuice is [Polyjuice for Godwoken](https://github.com/nervosnetwork/godwoken-polyjuice) that is the Ethereum compatible backend for [Godwoken](https://github.com/nervosnetwork/godwoken). Godwoken is a layer 2 rollup framework for Nervos CKB. It provides scaling capabilities with rollups that perform transaction execution outside a CKB chain. Simply put, Polyjuice provides a way to inject custom logic into the rollup solution of Godwoken. Godwoken solves the shared state problem of Polyjuice.
+The active development repository of Polyjuice is [Polyjuice for Godwoken](https://github.com/nervosnetwork/godwoken-polyjuice) that is the Ethereum compatible backend for [Godwoken](https://github.com/nervosnetwork/godwoken). Polyjuice supports to deploy Ethereum DApps to CKB when it is deployed with Godwoken.
 
-Polyjuice supports to deploy Ethereum DApps to CKB when Polyjuice is deployed with Godwoken.
+Godwoken is a layer 2 rollup framework for Nervos CKB. It provides scaling capabilities with rollups that perform transaction execution outside a CKB chain. Simply put, Polyjuice provides a way to inject custom logic into the rollup solution of Godwoken. Godwoken solves the shared state problem of Polyjuice.
 
 Figure 1 shows the main relationship among CKB nodes, Godwoken nodes, Polyjuice and Ethereum DApps. 
 
-<img src={useBaseUrl("img/arch.png")}  width="50%"/>
+<img src={useBaseUrl("img/arch.png")}  width="40%"/>
 
 Figure 1. Architecture for Polyjuice Deployed with Godwoken
 
 Polyjuice and Godwoken works as follows:
 
 1. Polyjuice accepts Ethereum transactions and executes the transactions in EVM, then sends the transactions to Godwoken nodes.
-2. Godwoken nodes collect specially designed layer 2 transactions and pack the special transactions into CKB transactions. Finally, submit the CKB transactions to layer 1 (CKB nodes) for acceptance.
+2. Godwoken nodes collect specially designed layer 2 transactions and pack the special transactions into CKB transactions. Finally, submit the CKB transactions to layer 1 for acceptance.
 
 ## Decentralization Roadmap
 
@@ -43,13 +43,13 @@ Polyjuice and Godwoken works as follows:
 
 ### Polyjuice Networks
 
-The following Polyjuice networks can be used for migrating Ethereum DApps to Polyjuice:
+The following Polyjuice networks can be used for deploying Ethereum DApps to Polyjuice:
 
 | Network Name                             | Description                                                  |
 | ---------------------------------------- | ------------------------------------------------------------ |
 | <p>Polyjuice&nbsp;Testnet</p>            | RPC URL: https://godwoken-testnet-web3-rpc.ckbapp.dev/<br/>Chain ID: 71393<br/> |
 | <p>Polyjuice&nbsp;Mainnet</p>            | Todo                                                         |
-| <p>Local&nbsp;Polyjuice&nbsp;Network</p> | A local Polyjuice network can be deployed by one of the following deployment methods to fulfill different deployment requirements:<br/><ul><li><p>Deploy a Polyjuice network by using Godwoken-kicker.</p><p>Godwoken-kicker is a one line command to start a Godwoken chain with Polyjuice on **Devnet**. This deployment method helps developers deploy Ethereum contracts and migrate Ethereum DApps to CKB Devnet quickly in testing and development environments.</p><p>RPC URL: http://localhost:8024<br/>Chain ID: 1024777<br/></p></li><li>Deploy a Polyjuice network manually.</li></ul> |
+| <p>Local&nbsp;Polyjuice&nbsp;Network</p> | A local Polyjuice network can be deployed by one of the following deployment methods to fulfill different deployment requirements:<br/><ul><li><p>Deploy a Polyjuice network by using Godwoken-kicker.</p><p>Godwoken-kicker is a one line command to start a Godwoken chain with Polyjuice on **Devnet**. This deployment method helps developers deploy Ethereum contracts and migrate Ethereum DApps to CKB Devnet quickly in testing and development environments.</p><p>RPC URL: http://localhost:8024<br/>Chain ID: 1024777<br/></p></li><li><p>Deploy a Polyjuice network manually.</p><p>This deployment method is useful in situations such as deploying a Godwoken chain with Polyjuice on <b>Testnet</b> or <b>Mainnet</b>.</p></li></ul> |
 
 ## Deployment
 
@@ -288,8 +288,6 @@ Great! Checkout http://localhost:6100 to deploy contract!
 For more information about the Godwoken-kicker commands, see [godwoken-kicker](https://github.com/RetricSu/godwoken-kicker).
 
 ### Deploy a Polyjuice Network Manually
-
-This deployment method is useful in situations such as deploying a Godwoken chain with Polyjuice on **Testnet** or **Mainnet**.
 
 #### Environment
 
