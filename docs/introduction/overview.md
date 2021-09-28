@@ -1,80 +1,59 @@
 ---
-id: godwoken
-title: Godwoken
-sidebar_label: Godwoken
+id: polyjuice
+title: Polyjuice
+sidebar_label: Polyjuice
 ---
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
 ## Overview
 
-### Polyjuice
-Polyjuice is CKB solution on Ethereum. Polyjuice provides an Ethereum compatible layer on CKB, leverages account model as well scalability provided by Godwoken, then to integrates [evmone](https://github.com/ethereum/evmone) as an EVM engine for running Ethereum smart contracts. Polyjuice consists of two main parts in design, a Godwoken backend for state computation where Polyjuice transactions are essentially just Godwoken transactions, along with a peripheral part that provides tools for building Polyjuice transactions.
+Polyjuice is an EVM compatible layer that exposes an account model on top of the cell model of CKB. It supports Solidity based smart contracts to run on Nervos CKB. <!--Polyjuice uses [evmone](https://github.com/ethereum/evmone) as the EVM implementation in both generator and validator. It accepts Ethereum transactions and executes the transactions in EVM. For more information about Polyjuice transactions, see [Life of a Polyjuice Transaction](https://github.com/nervosnetwork/godwoken/blob/master/docs/life_of_a_polyjuice_transaction.md).-->
 
-### Godwoken
-Godwoken is a layer 2 rollup framework for Nervos CKB. It provides scaling capabilities with rollups that perform transaction execution outside CKB chain. Godwoken supports optimistic rollups that can use the always success script or [Proof of Authority](https://github.com/nervosnetwork/clerkb) to issue layer 2 blocks. When POA is used, limited `block_producers` can issue layer 2 blocks. For more information, see [Life of a Godwoken transaction](https://github.com/nervosnetwork/godwoken/blob/master/docs/life_of_a_godwoken_transaction.md#life-of-a-godwoken-transaction).
+The active development repository of Polyjuice is [Polyjuice for Godwoken](https://github.com/nervosnetwork/godwoken-polyjuice) that is the Ethereum compatible backend for [Godwoken](https://github.com/nervosnetwork/godwoken). Godwoken is a layer 2 rollup framework for Nervos CKB. It provides scaling capabilities with rollups that perform transaction execution outside a CKB chain. Simply put, Polyjuice provides a way to inject custom logic into the rollup solution of Godwoken. Godwoken solves the shared state problem of Polyjuice.
 
-  ##### Godwoken Nodes
+Polyjuice supports to deploy Ethereum DApps to CKB when Polyjuice is deployed with Godwoken.
 
-Godwoken works by using **aggregator** nodes. 
+Figure 1 shows the main relationship among CKB nodes, Godwoken nodes, Polyjuice and Ethereum DApps. 
 
-The nodes are used to:
+<img src={useBaseUrl("img/arch.png")}  width="50%"/>
 
-1. Collect specially designed layer 2 transactions.
-2. Pack the special transactions into CKB transactions that can also be considered as layer 2 blocks.
-3. Submit the CKB transactions to layer 1 for acceptance. **m** of **n** multisig keys are used to deploy on-chain cells to layer 1. Every update needs to be verified by the holders of the keys.
+Figure 1. Architecture for Polyjuice Deployed with Godwoken
 
-<img src={useBaseUrl("img/godwoken.png")}  width="70%"/>
+Polyjuice and Godwoken works as follows:
 
+1. Polyjuice accepts Ethereum transactions and executes the transactions in EVM, then sends the transactions to Godwoken nodes.
+2. Godwoken nodes collect specially designed layer 2 transactions and pack the special transactions into CKB transactions. Finally, submit the CKB transactions to layer 1 (CKB nodes) for acceptance.
 
+## Decentralization Roadmap
 
-Godwoken nodes have three modes:
+- **Stage 1** (up to the mainnet release): The sequencer is the only validator. Godwoken supports to view rollups and find out whether there is any invalid commit in a rollup.
 
-- **fullnode** mode: The Godwoken nodes in fullnode mode verify new blocks and transactions, relay blocks and transactions. The nodes are the verifiers of the network.
+- **Stage 2** (after the mainnet release): Godwoken will introduce permission-less validators. Then, everyone can run a validator to view rollups. If the sequencer commits an invalid state, a challenge will be processed, and the sequencer will lose staked assets on layer1. If the sequencer stops working, everyone can run a block producer to process the withdrawal from the rollup.
 
-  :::note
+  The target of stage 2 is to reach the same decentralization level as popular rollup projects such as Arbitrum.
 
-  In the current stage, Godwoekn supports one single central node for producing blocks. To use fullnode mode Godwoken, a local DEV chain must be deployed for the development.
+- **Stage 3**: Multiple sequencers will be investigated and explored.
 
-  :::
+## How to Use Polyjuice
 
-- **readonly** mode: By default, two readonly Godwoken nodes can be deployed in a deployment process. The two readonly nodes can synchronize the data of testnet or mainnet for queries.
+### Workflow
 
-- **test** mode: Test mode is used for Godwoken internal test purpose.
-
-
-### **Structural Architecture between Polyjuice and Godwoken** 
-
-When Godwoken is deployed with Polyjuice, it also supports porting Ethereum DApps to CKB. Polyjuice is an Ethereum compatible layer that allows Solidity based smart contracts to run on Nervos CKB. Polyjuice uses [evmone](https://github.com/ethereum/evmone) as the EVM implementation in both `generator` and `validator`. It accepts Ethereum transactions and executes the transactions in EVM. For more information, see [Polyjuice for Godwoken](https://github.com/nervosnetwork/godwoken-polyjuice) and [Life of a Polyjuice Transaction](https://github.com/nervosnetwork/godwoken/blob/master/docs/life_of_a_polyjuice_transaction.md). 
-Simply put, Polyjuice provides a way to inject custom logic into the rollup solution of Godwoken, and Godwoken solves the shared state problem of Polyjuice.
-
-For more information about the deployment of Godwoken, see the sections of [Deploy a Godwoken chain with Polyjuice by Using Godwoken-Kicker](godwoken#deploy-a-godwoken-chain-with-polyjuice-by-using-godwoken-kicker) and [Deploy Godwoken Manually](godwoken#deploy-godwoken-manually).
-
-### Repositories & Functions
+1. Choose or deploy a [Polyjuice network](../introduction/polyjuice#polyjuice-networks).
+2. Deploy an Ethereum DApp to Polyjuice.
 
 ### Polyjuice Networks
 
-## Glossary
+The following Polyjuice networks can be used for migrating Ethereum DApps to Polyjuice:
 
-## Applying Polyjuice
-- Quick Start(by using Testnet)
-  1. set up the environment
-  2. deploy a dapp to polyjuice
-- Tutorial
-- RPC Documentation
+| Network Name                             | Description                                                  |
+| ---------------------------------------- | ------------------------------------------------------------ |
+| <p>Polyjuice&nbsp;Testnet</p>            | RPC URL: https://godwoken-testnet-web3-rpc.ckbapp.dev/<br/>Chain ID: 71393<br/> |
+| <p>Polyjuice&nbsp;Mainnet</p>            | Todo                                                         |
+| <p>Local&nbsp;Polyjuice&nbsp;Network</p> | A local Polyjuice network can be deployed by one of the following deployment methods to fulfill different deployment requirements:<br/><ul><li><p>Deploy a Polyjuice network by using Godwoken-kicker.</p><p>Godwoken-kicker is a one line command to start a Godwoken chain with Polyjuice on **Devnet**. This deployment method helps developers deploy Ethereum contracts and migrate Ethereum DApps to CKB Devnet quickly in testing and development environments.</p><p>RPC URL: http://localhost:8024<br/>Chain ID: 1024777<br/></p></li><li>Deploy a Polyjuice network manually.</li></ul> |
 
-## Godwoken Deployment 
+## Deployment
 
-Two deployment methods are provided for deploying a Godwoken chain with Polyjuice to fulfill different deployment requirements:
-
-- Deploy a Godwoken chain with Polyjuice by using Godwoken-kicker
-
-  Godwoken-kicker is a one line command to start a Godwoken chain with Polyjuice on **Devnet**. This deployment method can help developers deploy Ethereum contracts and migrate Ethereum DApps to CKB Devnet quickly in testing and development environments.
-
-- Deploy a Godwoken chain with Polyjuice manually
-
-  This deployment method is useful in situations such as deploying a Godwoken chain with Polyjuice on **Testnet** or **Mainnet**.
-
-### Deploy a Godwoken Chain with Polyjuice by Using Godwoken-Kicker
+### Deploy a Polyjuice Network by Using Godwoken-Kicker
 
 Godwoken-kicker provides a quick mode and a custom mode for the deployment.
 
@@ -104,9 +83,9 @@ $ git clone https://github.com/RetricSu/godwoken-kicker.git
 <li><p>Initialize Godwoken-kicker.</p>
 
 :::note
-  
+
 Stop any running Godwoken chain by using the <code>make stop</code> command before initializing Godwoken-kicker. 
-  
+
 :::
 
 ```bash
@@ -129,9 +108,9 @@ $ make init
 $ make start
 ```
 :::note
-  
+
   Do note that after running <code>make clean</code>, run <code>make init</code> again if a reboot is desired. 
-  
+
 :::
 <details><summary>Output</summary>
 <p>
@@ -163,7 +142,7 @@ All Jobs Done       : [########################################] 100%
 
 Great! Checkout http://localhost:6100 to deploy contract!
 ```
-  
+
 </p>
 </details>
 
@@ -171,7 +150,12 @@ Great! Checkout http://localhost:6100 to deploy contract!
 
 <li><p>Set up an Ethereum wallet.</p><p>In this example, a MetaMask (an Ethereum Wallet) wallet is set up for the deployment. Add the MetaMask extension in the browser (Firefox, Google Chrome, Brave or Microsoft Edge.) and create an account for the wallet.</p><p>If there is a MetaMask wallet ready to be used, skip this step and go to the next step directly.</p></li>
 
-<li>When the Godwoken chain is started successfully, open the website at <a>http://localhost:6100</a> and connect the MetaMask wallet by clicking the <b>Connect Wallet</b> button.</li>
+<li><p>When the Godwoken chain is started successfully, open the website at <a>http://localhost:6100</a> and connect the MetaMask wallet by clicking the <b>Connect Wallet</b> button.</p>
+
+      RPC URL=http://localhost:8024
+      CHAIN ID=1024777
+
+</li>
 
 <li><p>Deploy an ETH contract to the Godwoken chain.</p><ol><li><p>Prepare and compile an ETH contract.</p></li>
 
@@ -285,7 +269,12 @@ Great! Checkout http://localhost:6100 to deploy contract!
 
 <li><p>Set up an Ethereum wallet.</p><p>In this example, a MetaMask (an Ethereum Wallet) wallet is set up for the deployment. Add the MetaMask extension in the browser (Firefox, Google Chrome, Brave or Microsoft Edge.) and create an account for the wallet.</p><p>If there is a MetaMask wallet ready to be used, skip this step and go to the next step directly.</p></li>  
 
-<li><p>When the Godwoken chain is started successfully, open the website at <a>http://localhost:6100</a> and connect the MetaMask wallet by clicking the <b>Connect Wallet</b> button.</p></li>
+<li><p>When the Godwoken chain is started successfully, open the website at <a>http://localhost:6100</a> and connect the MetaMask wallet by clicking the <b>Connect Wallet</b> button.</p>
+
+      RPC URL=http://localhost:8024
+      CHAIN ID=1024777
+
+</li>
 
 <li><p>Deploy an ETH contract to the Godwoken chain.</p>
 
@@ -298,7 +287,9 @@ Great! Checkout http://localhost:6100 to deploy contract!
 
 For more information about the Godwoken-kicker commands, see [godwoken-kicker](https://github.com/RetricSu/godwoken-kicker).
 
-### Deploy Godwoken Manually
+### Deploy a Polyjuice Network Manually
+
+This deployment method is useful in situations such as deploying a Godwoken chain with Polyjuice on **Testnet** or **Mainnet**.
 
 #### Environment
 
@@ -582,6 +573,11 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
       $ yarn run start
       ```
 
+## An Example of Deploying an Ethereum DApp to Polyjuice
+
+Todo
+
+复用 hackathon 的 tutorial, 1. 新建合约，2. 配置环境 3. 部署到 polyjuice 4. 调用， 可以咨询下 retricSu 有无适合的例子
 
 ## Project Examples
 
@@ -591,18 +587,35 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
 - [godwoken-simple-js](https://github.com/Kuzirashi/blockchain-workshop/tree/godwoken-simple-js)
 - [YokaiSwap](https://github.com/YokaiSwap)
 
-## Godwoken Decentralization Roadmap
-
-- **Stage 1** (up to the mainnet release): The sequencer is the only validator. Godwoken supports to view rollups and find out whether there is any invalid commit in a rollup.
-
-- **Stage 2** (after the mainnet release): Godwoken will introduce permission-less validators. Then, everyone can run a validator to view rollups. If the sequencer commits an invalid state, a challenge will be processed, and the sequencer will lose staked assets on layer1. If the sequencer stops working, everyone can run a block producer to process the withdrawal from the rollup.
-
-  The target of stage 2 is to reach the same decentralization level as popular rollup projects such as Arbitrum.
-
-- **Stage 3**: Multiple sequencers will be investigated and explored.
-
-
 ## References
+
+  ### Godwoken Nodes
+
+Godwoken works by using **aggregator** nodes. 
+
+The nodes are used to:
+
+1. Collect specially designed layer 2 transactions.
+2. Pack the special transactions into CKB transactions that can also be considered as layer 2 blocks.
+3. Submit the CKB transactions to layer 1 for acceptance. **m** of **n** multisig keys are used to deploy on-chain cells to layer 1. Every update needs to be verified by the holders of the keys.
+
+<!--<img src={useBaseUrl("img/godwoken.png")}  width="70%"/>-->
+
+### Godwoken Node Modes
+
+Godwoken nodes have three modes:
+
+- **fullnode** mode: The Godwoken nodes in fullnode mode verify new blocks and transactions, relay blocks and transactions. The nodes are the verifiers of the network.
+
+  :::note
+
+  In the current stage, Godwoekn supports one single central node for producing blocks. To use fullnode mode Godwoken, a local DEV chain must be deployed for the development.
+
+  :::
+
+- **readonly** mode: By default, two readonly Godwoken nodes can be deployed in a deployment process. The two readonly nodes can synchronize the data of testnet or mainnet for queries.
+
+- **test** mode: Test mode is used for Godwoken internal test purpose.
 
 | Resource                          | Link                                                         |
 | --------------------------------- | ------------------------------------------------------------ |
@@ -613,4 +626,10 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
 | Godwoken Testnet                  | [Godwoken Testnet](https://github.com/jjyr/godwoken-testnet) |
 | Ethereum RPC (web3 RPC)           | [Ethereum RPC (web3 RPC)](https://geth.ethereum.org/docs/rpc/server) |
 | Gitcoin Hackathon                 | <ul><li>[Godwoken Gitcoin Instruction](https://github.com/Kuzirashi/gw-gitcoin-instruction)</li><li>[NERVOS - BROADEN THE SPECTRUM](https://gitcoin.co/hackathon/nervos/onboard)</li></ul> |
+
+## Glossary
+
+Todo
+
+sequencer
 
