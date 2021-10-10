@@ -326,6 +326,8 @@ The following tools need to be installed before entering the deployment process:
 
   To manage Docker as a non-root user, see the Docker documentations of [Manage Docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/).
 
+  For more information about the tags of the pre-buildt docker image, see [nervos/godwoken-prebuilds](https://hub.docker.com/r/nervos/godwoken-prebuilds/tags?page=1&ordering=last_updated.) 
+
 * [Tippy](https://github.com/nervosnetwork/tippy/releases)
 
   Tippy is a tool to help set up and manage CKB nodes. For more information, see [Install a CKB Node by Using Tippy](https://cryptape.github.io/lumos-doc/docs/reference/ckbnode#install-a-ckb-node-by-using-tippy). The verified Tippy version in this documentation is [v0.3.2](https://github.com/nervosnetwork/tippy/releases/tag/v0.3.2).
