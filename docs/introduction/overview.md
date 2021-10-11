@@ -7,33 +7,29 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 ## Overview
 
-Polyjuice is an EVM compatible layer that exposes an account model on top of the cell model of CKB. It supports Solidity based smart contracts to run on Nervos CKB. <!--Polyjuice uses [evmone](https://github.com/ethereum/evmone) as the EVM implementation in both generator and validator. It accepts Ethereum transactions and executes the transactions in EVM. For more information about Polyjuice transactions, see [Life of a Polyjuice Transaction](https://github.com/nervosnetwork/godwoken/blob/master/docs/life_of_a_polyjuice_transaction.md).-->
+Polyjuice is an Ethereum abstraction layer that exposes an account model on top of the cell model of CKB. When Polyjuice is deployed with [Godwoken](https://github.com/nervosnetwork/godwoken), it supports to deploy Ethereum DApps to CKB.
 
-The active development repository of Polyjuice is [Polyjuice for Godwoken](https://github.com/nervosnetwork/godwoken-polyjuice) that is the Ethereum compatible backend for [Godwoken](https://github.com/nervosnetwork/godwoken). Polyjuice supports to deploy Ethereum DApps to CKB when it is deployed with Godwoken.
-
-Godwoken is a layer 2 rollup framework for Nervos CKB. It provides scaling capabilities with rollups that perform transaction execution outside a CKB chain. Simply put, Polyjuice provides a way to inject custom logic into the rollup solution of Godwoken. Godwoken solves the shared state problem of Polyjuice.
-
-Figure 1 shows the main relationship among CKB nodes, Godwoken nodes, Polyjuice and Ethereum DApps. 
+Godwoken is a layer 2 rollup framework that provides an abstracted account model and layer 2 transactions for Nervos CKB. <!--It provides scaling capabilities with rollups that perform transaction execution outside a CKB chain.--><!--Figure 1 shows the main relationship among a CKB chain, Godwoken, Polyjuice and an Ethereum DApp.--> 
 
 <img src={useBaseUrl("img/arch.png")}  width="40%"/>
 
 Figure 1. Architecture for Polyjuice Deployed with Godwoken
 
-Polyjuice and Godwoken works as follows:
+<!--Polyjuice and Godwoken works as follows:-->
 
-1. Polyjuice accepts Ethereum transactions and executes the transactions in EVM, then sends the transactions to Godwoken nodes.
-2. Godwoken nodes collect specially designed layer 2 transactions and pack the special transactions into CKB transactions. Finally, submit the CKB transactions to layer 1 for acceptance.
+<!--Polyjuice accepts Ethereum transactions and executes the transactions in EVM, then sends the transactions to Godwoken nodes.-->
+
+<!--Godwoken collect specially designed layer 2 transactions and pack the special transactions into CKB transactions. Finally, submit the CKB transactions to layer 1 for acceptance.-->
 
 ### Polyjuice Networks
 
-The following Polyjuice networks can be used for deploying Ethereum DApps to Polyjuice:
+To deploy an Ethereum DApp to Polyjuice, the following Polyjuice networks can be used:
 
 | Network Name                             | Description                                                  |
 | ---------------------------------------- | ------------------------------------------------------------ |
 | <p>Polyjuice&nbsp;Testnet</p>            | RPC URL: https://godwoken-testnet-web3-rpc.ckbapp.dev/<br/>Chain ID: 71393<br/> |
 | <p>Polyjuice&nbsp;Mainnet</p>            | Todo                                                         |
-| <p>Local&nbsp;Polyjuice&nbsp;Network</p> | A local Polyjuice network can be deployed by one of the following deployment methods to fulfill different deployment requirements:<br/><ul><li><p>Deploy a Polyjuice network by using Godwoken-kicker.</p><p>Godwoken-kicker is a one line command to start a Godwoken chain with Polyjuice on **Devnet**. This deployment method helps developers deploy Ethereum contracts and migrate Ethereum DApps to CKB Devnet quickly in testing and development environments.</p><p>RPC URL: http://localhost:8024<br/>Chain ID: 1024777<br/></p></li><li><p>Deploy a Polyjuice network manually.</p><p>This deployment method is useful in situations such as deploying a Godwoken chain with Polyjuice on <b>Testnet</b> or <b>Mainnet</b>.</p></li></ul> |
-
+| <p>Local&nbsp;Polyjuice&nbsp;Network</p> | A local Polyjuice network can be deployed by one of the following deployment methods to fulfill different deployment requirements:<br/><ul><li><p>Deploy a Polyjuice network by using Godwoken-kicker.</p><p>Godwoken-kicker is a one line command to start a Polyjuice network on **Devnet**. This deployment method helps developers deploy Ethereum contracts and migrate Ethereum DApps to CKB Devnet quickly in testing and development environments.</p><p>RPC URL: http://localhost:8024<br/>Chain ID: 1024777<br/></p></li><li><p>Deploy a Polyjuice network manually.</p><p>This deployment method is useful in situations such as deploying a Polyjuice network on <b>Testnet</b> or <b>Mainnet</b>.</p></li></ul> |
 
 ## Deployment
 
@@ -68,7 +64,7 @@ $ git clone https://github.com/RetricSu/godwoken-kicker.git
 
 :::note
 
-Stop any running Godwoken chain by using the <code>make stop</code> command before initializing Godwoken-kicker. 
+Stop any running the Polyjuice network by using the <code>make stop</code> command before initializing Godwoken-kicker. 
 
 :::
 
@@ -84,9 +80,9 @@ $ make init
 
 </li>
 
-<li><p>Start the Godwoken chain.</p>
+<li><p>Start the Polyjuice network.</p>
 
-<p>The <code>make start</code> command can be used to start the deployed Godwoken chain. If there is no chain deployed, the <code>make start-f</code> command can be used for a force start that deploys and starts a new Godwoken chain.</p>
+<p>The <code>make start</code> command can be used to start the deployed Polyjuice network. If there is no Polyjuice network deployed, the <code>make start-f</code> command can be used for a force start that deploys and starts a new Polyjuice network.</p>
 
 ```bash
 $ make start
@@ -134,18 +130,18 @@ Great! Checkout http://localhost:6100 to deploy contract!
 
 <li><p>Set up an Ethereum wallet.</p><p>In this example, a MetaMask (an Ethereum Wallet) wallet is set up for the deployment. Add the MetaMask extension in the browser (Firefox, Google Chrome, Brave or Microsoft Edge.) and create an account for the wallet.</p><p>If there is a MetaMask wallet ready to be used, skip this step and go to the next step directly.</p></li>
 
-<li><p>When the Godwoken chain is started successfully, open the website at <a>http://localhost:6100</a> and connect the MetaMask wallet by clicking the <b>Connect Wallet</b> button.</p>
+<li><p>When the Polyjuice network is started successfully, open the website at <a>http://localhost:6100</a> and connect the MetaMask wallet by clicking the <b>Connect Wallet</b> button.</p>
 
       RPC URL=http://localhost:8024
       CHAIN ID=1024777
 
 </li>
 
-<li><p>Deploy an ETH contract to the Godwoken chain.</p><ol><li><p>Prepare and compile an ETH contract.</p></li>
+<li><p>Deploy an ETH contract to the Polyjuice network.</p><ol><li><p>Prepare and compile an ETH contract.</p></li>
 
-<li>Deposit 400 CKB to the ETH wallet on the <b>ACCOUNTS</b> page of the Godwoken chain.</li>
+<li>Deposit 400 CKB to the ETH wallet on the <b>ACCOUNTS</b> page of the Polyjuice network.</li>
 
-<li>Deploy the ETH contract that you have compiled on the <b>CONTRACT</b> page of the Godwoken chain.</li></ol></li></ol>
+<li>Deploy the ETH contract that you have compiled on the <b>CONTRACT</b> page of the Polyjuice network.</li></ol></li></ol>
 
 </TabItem>
     <TabItem value="custom"><p>The custom mode is more flexible for custom requirements. It can build the components from local packages and executes the builds locally.</p><b>Environment</b><p><ul><li>Ubuntu 20.04 LTS</li></ul></p><b>Prerequisites</b><p><ul><li><a href="https://docs.docker.com/engine/install/ubuntu/">Docker Engine</a></li><li><a href="https://docs.docker.com/compose/install/">Docker Compose</a></li><li><a href="https://github.com/nervosnetwork/molecule">Moleculec</a></li><li>Rustup nightly</li></ul></p>
@@ -192,7 +188,7 @@ WEB3_GIT_CHECKOUT=main
 
 :::note
 
-Stop any running Godwoken chain by using the <code>make stop</code> command before initializing Godwoken-kicker.
+Stop any running the Polyjuice network by using the <code>make stop</code> command before initializing Godwoken-kicker.
 
 :::
 
@@ -206,9 +202,9 @@ The <code>make init</code> command can be used in the following situations:
 <ul><li>It is the first time to start the chain.</li><li>The deployment mode is changed.</li><li>The CKB chain data and all layer 1 related cache data are deleted.</li></ul>
 </li>
 
-<li><p>Start the Godwoken-Polyjuice chain.</p>
+<li><p>Start the Polyjuice network.</p>
 
-<p>The <code>make start</code> command can be used to start the deployed Godwoken-Polyjuice chain service. If there is no chain deployed, the <code>make start -f</code> command can be used for a force start that deploys and starts a new chain.</p>
+<p>The <code>make start</code> command can be used to start the deployed Polyjuice network. If there is no Polyjuice network deployed, the <code>make start -f</code> command can be used for a force start that deploys and starts a new Polyjuice network.</p>
 
 ```bash
 $ make start
@@ -253,16 +249,16 @@ Great! Checkout http://localhost:6100 to deploy contract!
 
 <li><p>Set up an Ethereum wallet.</p><p>In this example, a MetaMask (an Ethereum Wallet) wallet is set up for the deployment. Add the MetaMask extension in the browser (Firefox, Google Chrome, Brave or Microsoft Edge.) and create an account for the wallet.</p><p>If there is a MetaMask wallet ready to be used, skip this step and go to the next step directly.</p></li>  
 
-<li><p>When the Godwoken chain is started successfully, open the website at <a>http://localhost:6100</a> and connect the MetaMask wallet by clicking the <b>Connect Wallet</b> button.</p>
+<li><p>When the Polyjuice network is started successfully, open the website at <a>http://localhost:6100</a> and connect the MetaMask wallet by clicking the <b>Connect Wallet</b> button.</p>
 
       RPC URL=http://localhost:8024
       CHAIN ID=1024777
 
 </li>
 
-<li><p>Deploy an ETH contract to the Godwoken chain.</p>
+<li><p>Deploy an ETH contract to the Polyjuice network.</p>
 
-<ol><li><p>Prepare and compile an ETH contract.</p></li><li><p>Deposit 400 CKB to the ETH wallet on the <b>ACCOUNTS</b> page of the Godwoken chain.</p></li><li><p>Deploy the ETH contract that you have compiled on the <b>CONTRACT</b> page of the Godwoken chain.</p></li></ol>
+<ol><li><p>Prepare and compile an ETH contract.</p></li><li><p>Deposit 400 CKB to the ETH wallet on the <b>ACCOUNTS</b> page of the Polyjuice network.</p></li><li><p>Deploy the ETH contract that you have compiled on the <b>CONTRACT</b> page of the Polyjuice network.</p></li></ol>
 
 </li></ol>
 
@@ -296,12 +292,12 @@ The following tools need to be installed before entering the deployment process:
 
 * Rustc nightly v1.54.0
 
-* [Moleculec v0.6.1](https://github.com/nervosnetwork/molecule)
+* [Moleculec v0.7.2](https://github.com/nervosnetwork/molecule)
 
-  To install Moleculec 0.6.1:
+  To install Moleculec:
 
   ```bash
-  $ cargo install moleculec --version 0.6.1
+  $ cargo install moleculec
   ```
 
 * Docker
@@ -355,8 +351,6 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
       $ cd tippy-linux-x64
       $ ./Tippy
       ```
-
-      <!--Tippy is a tool to help set up and manage CKB nodes. For more information, see the instruction of [Install a CKB Node by Using Tippy](https://cryptape.github.io/lumos-doc/docs/reference/ckbnode#install-a-ckb-node-by-using-tippy).-->
 
    2. Start the CKB node and the CKB miner on the Tippy dashboard.
 
@@ -599,27 +593,27 @@ Todo
    Create a relative directory, if needed, then enter the directory and clone the repository . 
 
    ```
-   mkdir -p ~/projects
-   cd ~/projects
-   git clone https://github.com/TTNguyenDev/Dapps-Support-ForceBridge -b starter
+   $ mkdir -p ~/projects
+   $ cd ~/projects
+   $ git clone https://github.com/TTNguyenDev/Dapps-Support-ForceBridge -b starter
    ```
 
 2. Run the ETH DApp.
-  Install the dependencies and  build the smart contracts. Start Ganache to run a local Ethereum development chain.
-
-  ```
-  cd ~/projects/Dapps-Support-ForceBridge
-  yarn && yarn build && yarn start:ganache
-  ```
-
-  Open another terminal and start the UI server. 
-
-  ```
-  cd ~/projects/Dapps-Support-ForceBridge
-  yarn ui
-  ```
-
-  Open a browser tab to http://localhost:3000 to view the dApp after the server started. 
+    Install the dependencies and  build the smart contracts. Start Ganache to run a local Ethereum development chain.
+    
+    ```
+    $ cd ~/projects/Dapps-Support-ForceBridge
+    $ yarn && yarn build && yarn start:ganache
+    ```
+    
+    Open another terminal and start the UI server. 
+    
+    ```
+    $ cd ~/projects/Dapps-Support-ForceBridge
+    $ yarn ui
+    ```
+    
+    Open a browser tab to http://localhost:3000 to view the DApp after the server started. 
 
 3. Setup Godwoken Test in MetaMask.
 
@@ -644,8 +638,8 @@ Todo
    Use the following commands to install both:
 
    ```
-   cd ~/projects/Dapps-Support-ForceBridge
-   yarn add @polyjuice-provider/web3@0.0.1-rc7 nervos-godwoken-integration@0.0.6
+   $ cd ~/projects/Dapps-Support-ForceBridge
+   $ yarn add @polyjuice-provider/web3@0.0.1-rc7 nervos-godwoken-integration@0.0.6
    ```
 
 5. Add and Configure the Web3 Provider for the Polyjuice Web3 Provider.
@@ -653,8 +647,8 @@ Todo
    Create a new `config.ts` file under the `src`:
 
    ```
-   cd ~/projects/Dapps-Support-ForceBridge/src
-   touch config.ts
+   $ cd ~/projects/Dapps-Support-ForceBridge/src
+   $ touch config.ts
    ```
 
    then fill it with the values presented:
@@ -668,130 +662,40 @@ Todo
    ```
 
 6. Update the UI file
-  Update the main UI in the file `~/projects/blockchain-workshop-ethereum-simple/src/ui/app.tsx`. Add the following lines in the main dependency importation section of the file:
-
-  ```
-  import { PolyjuiceHttpProvider } from '@polyjuice-provider/web3';
-  
-  import { AddressTranslator } from 'nervos-godwoken-integration';
-  
-  import { CONFIG } from '../config';
-  ```
-
-  Find and replace line.
-
-  ```
-  const web3 = new Web3((window as any).ethereum);
-  ```
-
-  to
-
-  ```
-  const godwokenRpcUrl = CONFIG.WEB3_PROVIDER_URL;
-  const providerConfig = {
-  rollupTypeHash: CONFIG.ROLLUP_TYPE_HASH,
-  ethAccountLockCodeHash: CONFIG.ETH_ACCOUNT_LOCK_CODE_HASH,
-  web3Url: godwokenRpcUrl
-  };
-  const provider = new PolyjuiceHttpProvider(godwokenRpcUrl, providerConfig);
-  const web3 = new Web3(provider);
-  ```
-
-  Add a new constant and include the useEffect hook to display the Polyjuice address to the user:
-```
-const [polyjuiceAddress, setPolyjuiceAddress] = useState<string | undefined>();
-
-useEffect(() => {
-    if (accounts-.[0]) {
-        const addressTranslator = new AddressTranslator();
-        setPolyjuiceAddress(addressTranslator.ethAddressToGodwokenShortAddress(accounts-.[0]));
-    } else {
-        setPolyjuiceAddress(undefined);
-    }
-}, [accounts-.[0]]);
-```
-
-The useEffect hook will execute when accounts-[0] change. Add a new line to the html code to display Polyjuice Address:
-
-```
-<br />
-Your Polyjuice address: <b>{polyjuiceAddress || ' - '}</b>
-<br />
-```
+    Update the main UI in the file `~/projects/blockchain-workshop-ethereum-simple/src/ui/app.tsx`. Add the following lines in the main dependency importation section of the file:
+    
+    ```
+    import { PolyjuiceHttpProvider } from '@polyjuice-provider/web3';
+    
+    import { AddressTranslator } from 'nervos-godwoken-integration';
+    
+    import { CONFIG } from '../config';
+    ```
+    
+    Find and replace line.
+    
+    ```
+    const web3 = new Web3((window as any).ethereum);
+    ```
+    
+     to
+    
+    ```
+    const godwokenRpcUrl = CONFIG.WEB3_PROVIDER_URL;
+    const providerConfig = {
+    rollupTypeHash: CONFIG.ROLLUP_TYPE_HASH,
+    ethAccountLockCodeHash: CONFIG.ETH_ACCOUNT_LOCK_CODE_HASH,
+    web3Url: godwokenRpcUrl
+    };
+    const provider = new PolyjuiceHttpProvider(godwokenRpcUrl, providerConfig);
+    const web3 = new Web3(provider);
+    ```
 
 7. Set Gas Limit Higher.
 
-   Godwoken Testnet requires a higher gas limit to be set for transactions. 
+   Godwoken Testnet requires a higher gas limit to be set for transactions.
 
-Open the `TTNguyenToken.ts ` file under the path 
-```
-~/projects/Dapps-Support-ForceBridge/src/lib/contracts'
-```
-add new constant at the beginning of the file:
-```
-const DEFAULT_SEND_OPTIONS = {
-    gas: 6000000
-};
-```
-modify 2 functions from :
-```
-async setTransferToken(fromAddress: string, toAddress: string, amount: number) {
-        const tx = await this.contract.methods
-            .transfer(toAddress, this.web3.utils.toWei(this.web3.utils.toBN(amount)))
-            .send({
-                from: fromAddress
-            });
-
-        return tx;
-    }
-    
-      async deploy(fromAddress: string) {
-        const deployTx = await (this.contract
-            .deploy({
-                data: TTNguyenTokenJSON.bytecode,
-                arguments: []
-            })
-            .send({
-                from: fromAddress,
-                to: '0x0000000000000000000000000000000000000000'
-            } as any) as any);
-
-        this.useDeployed(deployTx.contractAddress);
-
-        return deployTx.transactionHash;
-    }
-```
-to:
-
-```
-async setTransferToken(fromAddress: string, toAddress: string, amount: number) {
-        const tx = await this.contract.methods
-            .transfer(toAddress, this.web3.utils.toWei(this.web3.utils.toBN(amount)))
-            .send({
-                ...DEFAULT_SEND_OPTIONS,
-                from: fromAddress
-            });
-
-        return tx;
-    }
-    
-      async deploy(fromAddress: string) {
-        const deployTx = await (this.contract
-            .deploy({
-                data: TTNguyenTokenJSON.bytecode,
-                arguments: []
-            })
-            .send({
-                ...DEFAULT_SEND_OPTIONS,
-                from: fromAddress,
-                to: '0x0000000000000000000000000000000000000000'
-            } as any) as any);
-
-        this.useDeployed(deployTx.contractAddress);
-
-        return deployTx.transactionHash;
-    }
-```
+   Open the `TTNguyenToken.ts ` file:
 
 ## Project Examples
 
@@ -803,9 +707,9 @@ async setTransferToken(fromAddress: string, toAddress: string, amount: number) {
 
 ## Decentralization Roadmap
 
-- **Stage 1** (up to the mainnet release): The sequencer is the only validator. Godwoken supports to view rollups and find out whether there is any invalid commit in a rollup.
+- **Stage 1**: The sequencer is the only validator. Godwoken supports to view rollups and find out whether there is any invalid commit in a rollup.
 
-- **Stage 2** (after the mainnet release): Godwoken will introduce permission-less validators. Then, everyone can run a validator to view rollups. If the sequencer commits an invalid state, a challenge will be processed, and the sequencer will lose staked assets on layer1. If the sequencer stops working, everyone can run a block producer to process the withdrawal from the rollup.
+- **Stage 2**: Godwoken will introduce permission-less validators. Then, everyone can run a validator to view rollups. If the sequencer commits an invalid state, a challenge will be processed, and the sequencer will lose staked assets on layer1. If the sequencer stops working, everyone can run a block producer to process the withdrawal from the rollup.
 
   The target of stage 2 is to reach the same decentralization level as popular rollup projects such as Arbitrum.
 
@@ -822,5 +726,3 @@ async setTransferToken(fromAddress: string, toAddress: string, amount: number) {
 | Godwoken Testnet                  | [Godwoken Testnet](https://github.com/jjyr/godwoken-testnet) |
 | Ethereum RPC (web3 RPC)           | [Ethereum RPC (web3 RPC)](https://geth.ethereum.org/docs/rpc/server) |
 | Gitcoin Hackathon                 | <ul><li>[Godwoken Gitcoin Instruction](https://github.com/Kuzirashi/gw-gitcoin-instruction)</li><li>[NERVOS - BROADEN THE SPECTRUM](https://gitcoin.co/hackathon/nervos/onboard)</li></ul> |
-
-
