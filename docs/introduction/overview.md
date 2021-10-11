@@ -34,15 +34,6 @@ The following Polyjuice networks can be used for deploying Ethereum DApps to Pol
 | <p>Polyjuice&nbsp;Mainnet</p>            | Todo                                                         |
 | <p>Local&nbsp;Polyjuice&nbsp;Network</p> | A local Polyjuice network can be deployed by one of the following deployment methods to fulfill different deployment requirements:<br/><ul><li><p>Deploy a Polyjuice network by using Godwoken-kicker.</p><p>Godwoken-kicker is a one line command to start a Godwoken chain with Polyjuice on **Devnet**. This deployment method helps developers deploy Ethereum contracts and migrate Ethereum DApps to CKB Devnet quickly in testing and development environments.</p><p>RPC URL: http://localhost:8024<br/>Chain ID: 1024777<br/></p></li><li><p>Deploy a Polyjuice network manually.</p><p>This deployment method is useful in situations such as deploying a Godwoken chain with Polyjuice on <b>Testnet</b> or <b>Mainnet</b>.</p></li></ul> |
 
-## Decentralization Roadmap
-
-- **Stage 1** (up to the mainnet release): The sequencer is the only validator. Godwoken supports to view rollups and find out whether there is any invalid commit in a rollup.
-
-- **Stage 2** (after the mainnet release): Godwoken will introduce permission-less validators. Then, everyone can run a validator to view rollups. If the sequencer commits an invalid state, a challenge will be processed, and the sequencer will lose staked assets on layer1. If the sequencer stops working, everyone can run a block producer to process the withdrawal from the rollup.
-
-  The target of stage 2 is to reach the same decentralization level as popular rollup projects such as Arbitrum.
-
-- **Stage 3**: Multiple sequencers will be investigated and explored.
 
 ## Deployment
 
@@ -706,11 +697,101 @@ Todo
   const web3 = new Web3(provider);
   ```
 
+  Add a new constant and include the useEffect hook to display the Polyjuice address to the user:
+```
+const [polyjuiceAddress, setPolyjuiceAddress] = useState<string | undefined>();
+
+useEffect(() => {
+    if (accounts-.[0]) {
+        const addressTranslator = new AddressTranslator();
+        setPolyjuiceAddress(addressTranslator.ethAddressToGodwokenShortAddress(accounts-.[0]));
+    } else {
+        setPolyjuiceAddress(undefined);
+    }
+}, [accounts-.[0]]);
+```
+
+The useEffect hook will execute when accounts-[0] change. Add a new line to the html code to display Polyjuice Address:
+
+```
+<br />
+Your Polyjuice address: <b>{polyjuiceAddress || ' - '}</b>
+<br />
+```
+
 7. Set Gas Limit Higher.
 
-   Godwoken Testnet requires a higher gas limit to be set for transactions.
+   Godwoken Testnet requires a higher gas limit to be set for transactions. 
 
-   Open the `TTNguyenToken.ts ` file:
+Open the `TTNguyenToken.ts ` file under the path 
+```
+~/projects/Dapps-Support-ForceBridge/src/lib/contracts'
+```
+add new constant at the beginning of the file:
+```
+const DEFAULT_SEND_OPTIONS = {
+    gas: 6000000
+};
+```
+modify 2 functions from :
+```
+async setTransferToken(fromAddress: string, toAddress: string, amount: number) {
+        const tx = await this.contract.methods
+            .transfer(toAddress, this.web3.utils.toWei(this.web3.utils.toBN(amount)))
+            .send({
+                from: fromAddress
+            });
+
+        return tx;
+    }
+    
+      async deploy(fromAddress: string) {
+        const deployTx = await (this.contract
+            .deploy({
+                data: TTNguyenTokenJSON.bytecode,
+                arguments: []
+            })
+            .send({
+                from: fromAddress,
+                to: '0x0000000000000000000000000000000000000000'
+            } as any) as any);
+
+        this.useDeployed(deployTx.contractAddress);
+
+        return deployTx.transactionHash;
+    }
+```
+to:
+
+```
+async setTransferToken(fromAddress: string, toAddress: string, amount: number) {
+        const tx = await this.contract.methods
+            .transfer(toAddress, this.web3.utils.toWei(this.web3.utils.toBN(amount)))
+            .send({
+                ...DEFAULT_SEND_OPTIONS,
+                from: fromAddress
+            });
+
+        return tx;
+    }
+    
+      async deploy(fromAddress: string) {
+        const deployTx = await (this.contract
+            .deploy({
+                data: TTNguyenTokenJSON.bytecode,
+                arguments: []
+            })
+            .send({
+                ...DEFAULT_SEND_OPTIONS,
+                from: fromAddress,
+                to: '0x0000000000000000000000000000000000000000'
+            } as any) as any);
+
+        this.useDeployed(deployTx.contractAddress);
+
+        return deployTx.transactionHash;
+    }
+```
 
 ## Project Examples
 
@@ -720,35 +801,17 @@ Todo
 - [godwoken-simple-js](https://github.com/Kuzirashi/blockchain-workshop/tree/godwoken-simple-js)
 - [YokaiSwap](https://github.com/YokaiSwap)
 
+## Decentralization Roadmap
+
+- **Stage 1** (up to the mainnet release): The sequencer is the only validator. Godwoken supports to view rollups and find out whether there is any invalid commit in a rollup.
+
+- **Stage 2** (after the mainnet release): Godwoken will introduce permission-less validators. Then, everyone can run a validator to view rollups. If the sequencer commits an invalid state, a challenge will be processed, and the sequencer will lose staked assets on layer1. If the sequencer stops working, everyone can run a block producer to process the withdrawal from the rollup.
+
+  The target of stage 2 is to reach the same decentralization level as popular rollup projects such as Arbitrum.
+
+- **Stage 3**: Multiple sequencers will be investigated and explored.
+
 ## References
-
-  ### Godwoken Nodes
-
-Godwoken works by using **aggregator** nodes. 
-
-The nodes are used to:
-
-1. Collect specially designed layer 2 transactions.
-2. Pack the special transactions into CKB transactions that can also be considered as layer 2 blocks.
-3. Submit the CKB transactions to layer 1 for acceptance. **m** of **n** multisig keys are used to deploy on-chain cells to layer 1. Every update needs to be verified by the holders of the keys.
-
-<!--<img src={useBaseUrl("img/godwoken.png")}  width="70%"/>-->
-
-### Godwoken Node Modes
-
-Godwoken nodes have three modes:
-
-- **fullnode** mode: The Godwoken nodes in fullnode mode verify new blocks and transactions, relay blocks and transactions. The nodes are the verifiers of the network.
-
-  :::note
-
-  In the current stage, Godwoekn supports one single central node for producing blocks. To use fullnode mode Godwoken, a local DEV chain must be deployed for the development.
-
-  :::
-
-- **readonly** mode: By default, two readonly Godwoken nodes can be deployed in a deployment process. The two readonly nodes can synchronize the data of testnet or mainnet for queries.
-
-- **test** mode: Test mode is used for Godwoken internal test purpose.
 
 | Resource                          | Link                                                         |
 | --------------------------------- | ------------------------------------------------------------ |
@@ -760,9 +823,4 @@ Godwoken nodes have three modes:
 | Ethereum RPC (web3 RPC)           | [Ethereum RPC (web3 RPC)](https://geth.ethereum.org/docs/rpc/server) |
 | Gitcoin Hackathon                 | <ul><li>[Godwoken Gitcoin Instruction](https://github.com/Kuzirashi/gw-gitcoin-instruction)</li><li>[NERVOS - BROADEN THE SPECTRUM](https://gitcoin.co/hackathon/nervos/onboard)</li></ul> |
 
-### Glossary
-
-Todo
-
-sequencer
 
