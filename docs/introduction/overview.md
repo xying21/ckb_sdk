@@ -24,23 +24,6 @@ Polyjuice and Godwoken works as follows:
 1. Polyjuice accepts Ethereum transactions and executes the transactions in EVM, then sends the transactions to Godwoken nodes.
 2. Godwoken nodes collect specially designed layer 2 transactions and pack the special transactions into CKB transactions. Finally, submit the CKB transactions to layer 1 for acceptance.
 
-## Decentralization Roadmap
-
-- **Stage 1** (up to the mainnet release): The sequencer is the only validator. Godwoken supports to view rollups and find out whether there is any invalid commit in a rollup.
-
-- **Stage 2** (after the mainnet release): Godwoken will introduce permission-less validators. Then, everyone can run a validator to view rollups. If the sequencer commits an invalid state, a challenge will be processed, and the sequencer will lose staked assets on layer1. If the sequencer stops working, everyone can run a block producer to process the withdrawal from the rollup.
-
-  The target of stage 2 is to reach the same decentralization level as popular rollup projects such as Arbitrum.
-
-- **Stage 3**: Multiple sequencers will be investigated and explored.
-
-## How to Use Polyjuice
-
-### Workflow
-
-1. Choose or deploy a [Polyjuice network](../introduction/polyjuice#polyjuice-networks).
-2. Deploy an Ethereum DApp to Polyjuice.
-
 ### Polyjuice Networks
 
 The following Polyjuice networks can be used for deploying Ethereum DApps to Polyjuice:
@@ -50,6 +33,16 @@ The following Polyjuice networks can be used for deploying Ethereum DApps to Pol
 | <p>Polyjuice&nbsp;Testnet</p>            | RPC URL: https://godwoken-testnet-web3-rpc.ckbapp.dev/<br/>Chain ID: 71393<br/> |
 | <p>Polyjuice&nbsp;Mainnet</p>            | Todo                                                         |
 | <p>Local&nbsp;Polyjuice&nbsp;Network</p> | A local Polyjuice network can be deployed by one of the following deployment methods to fulfill different deployment requirements:<br/><ul><li><p>Deploy a Polyjuice network by using Godwoken-kicker.</p><p>Godwoken-kicker is a one line command to start a Godwoken chain with Polyjuice on **Devnet**. This deployment method helps developers deploy Ethereum contracts and migrate Ethereum DApps to CKB Devnet quickly in testing and development environments.</p><p>RPC URL: http://localhost:8024<br/>Chain ID: 1024777<br/></p></li><li><p>Deploy a Polyjuice network manually.</p><p>This deployment method is useful in situations such as deploying a Godwoken chain with Polyjuice on <b>Testnet</b> or <b>Mainnet</b>.</p></li></ul> |
+
+## Decentralization Roadmap
+
+- **Stage 1** (up to the mainnet release): The sequencer is the only validator. Godwoken supports to view rollups and find out whether there is any invalid commit in a rollup.
+
+- **Stage 2** (after the mainnet release): Godwoken will introduce permission-less validators. Then, everyone can run a validator to view rollups. If the sequencer commits an invalid state, a challenge will be processed, and the sequencer will lose staked assets on layer1. If the sequencer stops working, everyone can run a block producer to process the withdrawal from the rollup.
+
+  The target of stage 2 is to reach the same decentralization level as popular rollup projects such as Arbitrum.
+
+- **Stage 3**: Multiple sequencers will be investigated and explored.
 
 ## Deployment
 
@@ -573,13 +566,31 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
       $ yarn run start
       ```
 
-## An Example of Deploying an Ethereum DApp to Polyjuice by Godwoken-Kicker
+## How to Use Polyjuice
 
-### Environment
+### Workflow
+
+1. Setup the environment.
+
+2. Choose Polyjuice testnet or mainnet network or deploy a local Polyjuice network.
+
+   For more information about Polyjuice network, see [Polyjuice network](../introduction/polyjuice#polyjuice-networks).
+
+   For more information about deploying a Polyjuice network, see the sections of Deployment.
+
+3. Deploy an Ethereum DApp to Polyjuice.
+
+### RPC Documentation for Reference
+
+Todo
+
+### An Example of Deploying an Ethereum DApp to Polyjuice by Godwoken-Kicker
+
+#### Environment
 
 - Ubuntu 20.04
 
-### Prerequisite Development Software
+#### Prerequisite Development Software
 
 - Node.js >= 14
 - Yarn 
@@ -587,116 +598,119 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
 - Docker-compose
 - Rust
 
-### Prerequisite Wallet Software
+#### Prerequisite Wallet Software
 
 - MetaMask
 
-### Steps
-1. Clone an Existing ETH dApp
+#### Steps
+1. Clone an Existing ETH DApp.
 
-Create a relative directory, if needed, then enter the directory and clone the repository . 
-```
-mkdir -p ~/projects
-cd ~/projects
-git clone https://github.com/TTNguyenDev/Dapps-Support-ForceBridge -b starter
-```
+   Create a relative directory, if needed, then enter the directory and clone the repository . 
 
-2. Run the ETH dApp
-Install the dependencies and  build the smart contracts. Start Ganache to run a local Ethereum development chain.
-```
-cd ~/projects/Dapps-Support-ForceBridge
-yarn && yarn build && yarn start:ganache
+   ```
+   mkdir -p ~/projects
+   cd ~/projects
+   git clone https://github.com/TTNguyenDev/Dapps-Support-ForceBridge -b starter
+   ```
 
-```
-Open another terminal and start the UI server. 
-```
-cd ~/projects/Dapps-Support-ForceBridge
-yarn ui
+2. Run the ETH DApp.
+  Install the dependencies and  build the smart contracts. Start Ganache to run a local Ethereum development chain.
 
-```
-Open a browser tab to http://localhost:3000 to view the dApp after the server started. 
+  ```
+  cd ~/projects/Dapps-Support-ForceBridge
+  yarn && yarn build && yarn start:ganache
+  ```
 
-3. Setup Godwoken Test in MetaMask
+  Open another terminal and start the UI server. 
 
-Set up the Metamask extension in browser and setup custom PRC with the following information：
-```
-Network Name: Godwoken Testnet
-New RPC URL: http://godwoken-testnet-web3-rpc.ckbapp.dev/
-Chain ID: 71393
-Currency Symbol (optional): N/A
-Block Explorer URL (optional): N/A
+  ```
+  cd ~/projects/Dapps-Support-ForceBridge
+  yarn ui
+  ```
 
-```
+  Open a browser tab to http://localhost:3000 to view the dApp after the server started. 
 
-4. Install Polyjuice Dependencies
+3. Setup Godwoken Test in MetaMask.
 
-To port the Ethereum application with Nervos' Layer 2, first step is to install the dependencies that are necessary for godwoken and polyjuice to work with. 
+   Set up the Metamask extension in browser and setup custom PRC with the following information:
 
-Two dependencies need to be added to allow the existing web3 Dapp to work with the second tier solution Polyjuice: `@polyjuice-provider/web3` and `nervos-godwoken-integration`.
+   ```
+   Network Name: Godwoken Testnet
+   New RPC URL: http://godwoken-testnet-web3-rpc.ckbapp.dev/
+   Chain ID: 71393
+   Currency Symbol (optional): N/A
+   Block Explorer URL (optional): N/A
+   ```
 
-@polyjuice-provider/web3 is a custom Polyjuice web3 provider used to replace the web3 library, necessary to interact with the Nervos Layer 2 smart contract. Nervos-godwoken-integration is a tool that can generate Polyjuice addresses based on Ethereum addresses.
+4. Install Polyjuice Dependencies.
 
-Use the following commands to install both:
-```
-cd ~/projects/Dapps-Support-ForceBridge
-yarn add @polyjuice-provider/web3@0.0.1-rc7 nervos-godwoken-integration@0.0.6
+   To port the Ethereum application with Nervos' Layer 2, first step is to install the dependencies that are necessary for godwoken and polyjuice to work with. 
 
-```
+   Two dependencies need to be added to allow the existing web3 Dapp to work with the second tier solution Polyjuice: `@polyjuice-provider/web3` and `nervos-godwoken-integration`.
 
-5. Add and Configure the Web3 Provider for the Polyjuice Web3 Provider
+   @polyjuice-provider/web3 is a custom Polyjuice web3 provider used to replace the web3 library, necessary to interact with the Nervos Layer 2 smart contract. Nervos-godwoken-integration is a tool that can generate Polyjuice addresses based on Ethereum addresses.
 
-Create a new `config.ts` file under the `src`:
-```
-cd ~/projects/Dapps-Support-ForceBridge/src
-touch config.ts
+   Use the following commands to install both:
 
-```
-then fill it with the values presented:
-```
-export const CONFIG = {
-WEB3_PROVIDER_URL: 'https://godwoken-testnet-web3-rpc.ckbapp.dev'
-ROLLUP_TYPE_HASH: '0x4cc2e6526204ae6a2e8fcf12f7ad472f41a1606d5b9624beebd215d780809f6a'
-ETH_ACCOUNT_LOCK_CODE_HASH: '0xdeec13a7b8e100579541384ccaf4b5223733e4a5483c3aec95ddc4c1d5ea5b22'
-}
-```
+   ```
+   cd ~/projects/Dapps-Support-ForceBridge
+   yarn add @polyjuice-provider/web3@0.0.1-rc7 nervos-godwoken-integration@0.0.6
+   ```
+
+5. Add and Configure the Web3 Provider for the Polyjuice Web3 Provider.
+
+   Create a new `config.ts` file under the `src`:
+
+   ```
+   cd ~/projects/Dapps-Support-ForceBridge/src
+   touch config.ts
+   ```
+
+   then fill it with the values presented:
+
+   ```
+   export const CONFIG = {
+   WEB3_PROVIDER_URL: 'https://godwoken-testnet-web3-rpc.ckbapp.dev'
+   ROLLUP_TYPE_HASH: '0x4cc2e6526204ae6a2e8fcf12f7ad472f41a1606d5b9624beebd215d780809f6a'
+   ETH_ACCOUNT_LOCK_CODE_HASH: '0xdeec13a7b8e100579541384ccaf4b5223733e4a5483c3aec95ddc4c1d5ea5b22'
+   }
+   ```
 
 6. Update the UI file
-Update the main UI in the file `~/projects/blockchain-workshop-ethereum-simple/src/ui/app.tsx`. 
+  Update the main UI in the file `~/projects/blockchain-workshop-ethereum-simple/src/ui/app.tsx`. Add the following lines in the main dependency importation section of the file:
 
-Add the following lines in the main dependency importation section of the file:
-```
-import { PolyjuiceHttpProvider } from '@polyjuice-provider/web3';
+  ```
+  import { PolyjuiceHttpProvider } from '@polyjuice-provider/web3';
+  
+  import { AddressTranslator } from 'nervos-godwoken-integration';
+  
+  import { CONFIG } from '../config';
+  ```
 
-import { AddressTranslator } from 'nervos-godwoken-integration';
+  Find and replace line.
 
-import { CONFIG } from '../config';
+  ```
+  const web3 = new Web3((window as any).ethereum);
+  ```
 
-```
-Find and replace line 
-```
-const web3 = new Web3((window as any).ethereum);
-```
-to
-```
-const godwokenRpcUrl = CONFIG.WEB3_PROVIDER_URL;
-const providerConfig = {
-rollupTypeHash: CONFIG.ROLLUP_TYPE_HASH,
-ethAccountLockCodeHash: CONFIG.ETH_ACCOUNT_LOCK_CODE_HASH,
-web3Url: godwokenRpcUrl
-};
-const provider = new PolyjuiceHttpProvider(godwokenRpcUrl, providerConfig);
-const web3 = new Web3(provider);
-```
+  to
 
-7. Set Gas Limit Higher
+  ```
+  const godwokenRpcUrl = CONFIG.WEB3_PROVIDER_URL;
+  const providerConfig = {
+  rollupTypeHash: CONFIG.ROLLUP_TYPE_HASH,
+  ethAccountLockCodeHash: CONFIG.ETH_ACCOUNT_LOCK_CODE_HASH,
+  web3Url: godwokenRpcUrl
+  };
+  const provider = new PolyjuiceHttpProvider(godwokenRpcUrl, providerConfig);
+  const web3 = new Web3(provider);
+  ```
 
-Godwoken Testnet requires a higher gas limit to be set for transactions. 
+7. Set Gas Limit Higher.
 
-Open the `TTNguyenToken.ts ` file:
+   Godwoken Testnet requires a higher gas limit to be set for transactions.
 
-
-
-
+   Open the `TTNguyenToken.ts ` file:
 
 ## Project Examples
 
@@ -746,7 +760,7 @@ Godwoken nodes have three modes:
 | Ethereum RPC (web3 RPC)           | [Ethereum RPC (web3 RPC)](https://geth.ethereum.org/docs/rpc/server) |
 | Gitcoin Hackathon                 | <ul><li>[Godwoken Gitcoin Instruction](https://github.com/Kuzirashi/gw-gitcoin-instruction)</li><li>[NERVOS - BROADEN THE SPECTRUM](https://gitcoin.co/hackathon/nervos/onboard)</li></ul> |
 
-## Glossary
+### Glossary
 
 Todo
 
