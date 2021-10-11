@@ -206,9 +206,9 @@ The <code>make init</code> command can be used in the following situations:
 <ul><li>It is the first time to start the chain.</li><li>The deployment mode is changed.</li><li>The CKB chain data and all layer 1 related cache data are deleted.</li></ul>
 </li>
 
-<li><p>Start the Godwoken chain.</p>
+<li><p>Start the Godwoken-Polyjuice chain.</p>
 
-<p>The <code>make start</code> command can be used to start the deployed Godwoken chain. If there is no chain deployed, the <code>make start -f</code> command can be used for a force start that deploys and starts a new Godwoken chain.</p>
+<p>The <code>make start</code> command can be used to start the deployed Godwoken-Polyjuice chain service. If there is no chain deployed, the <code>make start -f</code> command can be used for a force start that deploys and starts a new chain.</p>
 
 ```bash
 $ make start
@@ -583,7 +583,7 @@ Todo
 
 #### Prerequisite Development Software
 
-- Node.js >= 14
+- Node.js v14
 - Yarn 
 - Docker
 - Docker-compose
