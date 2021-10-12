@@ -794,7 +794,7 @@ Todo
 
    Input the following command to run the app once all the configs for Polyjuice have been completed.
    ```
-   yarn ui
+   $ yarn ui
    ```
    Open the browser and navigate to http://localhost:3000/.
 
