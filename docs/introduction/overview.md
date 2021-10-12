@@ -790,6 +790,15 @@ Todo
        }
    ```
 
+8. Run and Test dApp
+
+   Input the following command to run the app once all the configs for Polyjuice have been completed.
+   ```
+   yarn ui
+   ```
+   Open the browser and navigate to http://localhost:3000/.
+
+   
 ## Project Examples
 
 - [Porting an Existing Ethereum DApp to Polyjuice](https://github.com/TTNguyenDev/Hackathon-Nervos/tree/main/task_12#document-porting-an-existing-ethereum-dapp-to-polyjuice)
