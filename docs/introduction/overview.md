@@ -64,7 +64,7 @@ $ git clone https://github.com/RetricSu/godwoken-kicker.git
 
 :::note
 
-Stop any running the Polyjuice network by using the <code>make stop</code> command before initializing Godwoken-kicker. 
+Stop any running Polyjuice network by using the <code>make stop</code> command before initializing Godwoken-kicker. 
 
 :::
 
@@ -188,7 +188,7 @@ WEB3_GIT_CHECKOUT=main
 
 :::note
 
-Stop any running the Polyjuice network by using the <code>make stop</code> command before initializing Godwoken-kicker.
+Stop any running Polyjuice network by using the <code>make stop</code> command before initializing Godwoken-kicker.
 
 :::
 
@@ -690,12 +690,105 @@ Todo
     const provider = new PolyjuiceHttpProvider(godwokenRpcUrl, providerConfig);
     const web3 = new Web3(provider);
     ```
+    
+    Add a new constant and include the `useEffect` hook to display the Polyjuice address to the user:
+    
+    ```
+    const [polyjuiceAddress, setPolyjuiceAddress] = useState<string | undefined>();
+    
+    useEffect(() => {
+        if (accounts-.[0]) {
+            const addressTranslator = new AddressTranslator();
+            setPolyjuiceAddress(addressTranslator.ethAddressToGodwokenShortAddress(accounts-.[0]));
+        } else {
+            setPolyjuiceAddress(undefined);
+        }
+    }, [accounts-.[0]]);
+    ```
+    
+    The `useEffect` hook will execute when `accounts-[0]` changes. 
+    
+    Add a new line to the html code to display Polyjuice Address:
+    
+    ```
+    <br />
+    Your Polyjuice address: <b>{polyjuiceAddress || ' - '}</b>
+    <br />
+    ```
 
 7. Set Gas Limit Higher.
 
-   Godwoken Testnet requires a higher gas limit to be set for transactions.
+   Polyjuice Testnet requires a higher gas limit to be set for transactions.
 
-   Open the `TTNguyenToken.ts ` file:
+   Open the `TTNguyenToken.ts ` file under the path `~/projects/Dapps-Support-ForceBridge/src/lib/contracts` and add a new constant at the beginning of the file:
+
+   ```
+   const DEFAULT_SEND_OPTIONS = {
+       gas: 6000000
+   };
+   ```
+
+   Modify 2 functions from:
+
+   ```
+   async setTransferToken(fromAddress: string, toAddress: string, amount: number) {
+           const tx = await this.contract.methods
+               .transfer(toAddress, this.web3.utils.toWei(this.web3.utils.toBN(amount)))
+               .send({
+                   from: fromAddress
+               });
+   
+           return tx;
+       }
+       
+         async deploy(fromAddress: string) {
+           const deployTx = await (this.contract
+               .deploy({
+                   data: TTNguyenTokenJSON.bytecode,
+                   arguments: []
+               })
+               .send({
+                   from: fromAddress,
+                   to: '0x0000000000000000000000000000000000000000'
+               } as any) as any);
+   
+           this.useDeployed(deployTx.contractAddress);
+   
+           return deployTx.transactionHash;
+       }
+   ```
+
+   to:
+
+   ```
+   async setTransferToken(fromAddress: string, toAddress: string, amount: number) {
+           const tx = await this.contract.methods
+               .transfer(toAddress, this.web3.utils.toWei(this.web3.utils.toBN(amount)))
+               .send({
+                   ...DEFAULT_SEND_OPTIONS,
+                   from: fromAddress
+               });
+   
+           return tx;
+       }
+       
+         async deploy(fromAddress: string) {
+           const deployTx = await (this.contract
+               .deploy({
+                   data: TTNguyenTokenJSON.bytecode,
+                   arguments: []
+               })
+               .send({
+                   ...DEFAULT_SEND_OPTIONS,
+                   from: fromAddress,
+                   to: '0x0000000000000000000000000000000000000000'
+               } as any) as any);
+   
+           this.useDeployed(deployTx.contractAddress);
+   
+           return deployTx.transactionHash;
+       }
+   ```
 
 ## Project Examples
 
