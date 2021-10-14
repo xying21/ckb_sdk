@@ -7,33 +7,38 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 ## Overview
 
-Polyjuice is an Ethereum abstraction layer that exposes an account model on top of the cell model of CKB. When Polyjuice is deployed with [Godwoken](https://github.com/nervosnetwork/godwoken), it supports to deploy Ethereum DApps to CKB.
+Polyjuice is an Ethereum abstraction layer that exposes Ethereum compatible account model on top of Godwoken. When Polyjuice is deployed with [Godwoken](https://github.com/nervosnetwork/godwoken), it supports to deploy Ethereum DApps to CKB.
 
-Godwoken is a layer 2 rollup framework that provides an abstracted account model and layer 2 transactions for Nervos CKB. <!--It provides scaling capabilities with rollups that perform transaction execution outside a CKB chain.--><!--Figure 1 shows the main relationship among a CKB chain, Godwoken, Polyjuice and an Ethereum DApp.--> 
+Godwoken is a layer 2 rollup framework that provides an abstracted account model and abstracted layer 2 transactions upon Nervos CKB.
 
 <img src={useBaseUrl("img/arch.png")}  width="40%"/>
 
 Figure 1. Architecture for Polyjuice Deployed with Godwoken
 
-<!--Polyjuice and Godwoken works as follows:-->
-
-<!--Polyjuice accepts Ethereum transactions and executes the transactions in EVM, then sends the transactions to Godwoken nodes.-->
-
-<!--Godwoken collect specially designed layer 2 transactions and pack the special transactions into CKB transactions. Finally, submit the CKB transactions to layer 1 for acceptance.-->
-
 ### Polyjuice Networks
 
-To deploy an Ethereum DApp to Polyjuice, the following Polyjuice networks can be used:
+Polyjuice Testnet and Mainnet are provided for deploying Ethereum DApps to CKB.
 
-| Network Name                             | Description                                                  |
-| ---------------------------------------- | ------------------------------------------------------------ |
-| <p>Polyjuice&nbsp;Testnet</p>            | RPC URL: https://godwoken-testnet-web3-rpc.ckbapp.dev/<br/>Chain ID: 71393<br/> |
-| <p>Polyjuice&nbsp;Mainnet</p>            | Todo                                                         |
-| <p>Local&nbsp;Polyjuice&nbsp;Network</p> | A local Polyjuice network can be deployed by one of the following deployment methods to fulfill different deployment requirements:<br/><ul><li><p>Deploy a Polyjuice network by using Godwoken-kicker.</p><p>Godwoken-kicker is a one line command to start a Polyjuice network on **Devnet**. This deployment method helps developers deploy Ethereum contracts and migrate Ethereum DApps to CKB Devnet quickly in testing and development environments.</p><p>RPC URL: http://localhost:8024<br/>Chain ID: 1024777<br/></p></li><li><p>Deploy a Polyjuice network manually.</p><p>This deployment method is useful in situations such as deploying a Polyjuice network on <b>Testnet</b> or <b>Mainnet</b>.</p></li></ul> |
+- Polyjuice&nbsp;Testnet
+
+  - RPC URL: https://godwoken-testnet-web3-rpc.ckbapp.dev/
+
+  - Chain ID: 71393
+
+- Polyjuice&nbsp;Mainnet
+
+  Todo
+
+A Polyjuice network can also be deployed locally. For more information, see the sections of Deployment.
 
 ## Deployment
 
 ### Deploy a Polyjuice Network by Using Godwoken-Kicker
+
+Godwoken-kicker is a one line command to start a Polyjuice network on **Devnet**. This deployment method helps developers deploy Ethereum contracts and migrate Ethereum DApps to CKB Devnet quickly in testing and development environments.
+
+- RPC URL: http://localhost:8024
+- Chain ID: 1024777
 
 Godwoken-kicker provides a quick mode and a custom mode for the deployment.
 
@@ -268,6 +273,8 @@ Great! Checkout http://localhost:6100 to deploy contract!
 For more information about the Godwoken-kicker commands, see [godwoken-kicker](https://github.com/RetricSu/godwoken-kicker).
 
 ### Deploy a Polyjuice Network Manually
+
+This deployment method is useful in situations such as deploying a Polyjuice network on <b>Testnet</b> or <b>Mainnet</b>.
 
 #### Environment
 
@@ -515,7 +522,7 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
       $ docker run --name postgres -e POSTGRES_USER=user -e POSTGRES_DB=godwoken -e POSTGRES_PASSWORD=mypassword -d -p 5432:5432 postgres
       ```
 
-   2. Clone the source of [godwoken-web3](https://github.com/nervosnetwork/godwoken-web3) that is a Web3 RPC compatible layer build upon Godwoken and Polyjuice.
+   2. Clone the source of [godwoken-web3](https://github.com/nervosnetwork/godwoken-web3).
 
       ```bash
       $ git clone https://github.com/nervosnetwork/godwoken-web3
@@ -567,7 +574,9 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
 
 ### RPC Documentation for Reference
 
-Todo
+Polyjuice provides a Web3 RPC compatible layer.
+
+For more information, see [Ethereum RPC (web3 RPC)](https://github.com/nervosnetwork/godwoken-web3).
 
 ### An Example of Deploying an Ethereum DApp to Polyjuice by Godwoken-Kicker
 
