@@ -7,7 +7,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 ## Overview
 
-Polyjuice is an Ethereum abstraction layer that exposes an account model on top of the cell model of CKB. When Polyjuice is deployed with [Godwoken](https://github.com/nervosnetwork/godwoken), it supports to deploy Ethereum DApps to CKB.
+Polyjuice is an Ethereum abstraction layer that exposes an account model on top of the cell model of CKB. Polyjuice, when deployed with [Godwoken](https://github.com/nervosnetwork/godwoken), supports the deployment of Ethereum dapps to CKB.
 
 Godwoken is a layer 2 rollup framework that provides an abstracted account model and layer 2 transactions for Nervos CKB. <!--It provides scaling capabilities with rollups that perform transaction execution outside a CKB chain.--><!--Figure 1 shows the main relationship among a CKB chain, Godwoken, Polyjuice and an Ethereum DApp.--> 
 
@@ -23,7 +23,7 @@ Figure 1. Architecture for Polyjuice Deployed with Godwoken
 
 ### Polyjuice Networks
 
-To deploy an Ethereum DApp to Polyjuice, the following Polyjuice networks can be used:
+The following Polyjuice networks can be used to deploy Ethereum DApps to Polyjuice:
 
 | Network Name                             | Description                                                  |
 | ---------------------------------------- | ------------------------------------------------------------ |
@@ -130,7 +130,7 @@ Great! Checkout http://localhost:6100 to deploy contract!
 
 <li><p>Set up an Ethereum wallet.</p><p>In this example, a MetaMask (an Ethereum Wallet) wallet is set up for the deployment. Add the MetaMask extension in the browser (Firefox, Google Chrome, Brave or Microsoft Edge.) and create an account for the wallet.</p><p>If there is a MetaMask wallet ready to be used, skip this step and go to the next step directly.</p></li>
 
-<li><p>When the Polyjuice network is started successfully, open the website at <a>http://localhost:6100</a> and connect the MetaMask wallet by clicking the <b>Connect Wallet</b> button.</p>
+<li><p>After the Polyjuice network has been successfully launched, visit the website <a>http://localhost:6100</a> and connect the MetaMask wallet by clicking the <b>Connect Wallet</b> button.</p>
 
       RPC URL=http://localhost:8024
       CHAIN ID=1024777
