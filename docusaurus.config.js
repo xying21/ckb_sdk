@@ -2,13 +2,13 @@
 module.exports = {
   title: 'My Site',
   tagline: 'Documentation Test Site',
-  url: 'https://github.com/xying21/ckb_sdk',
-  baseUrl: '/ckb_sdk/',
+  url: 'https://github.com/xying21/review',
+  baseUrl: '/review/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'xying21', // Usually your GitHub org/user name.
-  projectName: 'ckb_sdk', // Usually your repo name.
+  projectName: 'review', // Usually your repo name.
   themeConfig: {
     navbar: {
       title: 'My Site',
