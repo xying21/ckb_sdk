@@ -9,7 +9,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 [Godwoken](https://github.com/nervosnetwork/godwoken) is a layer 2 rollup framework that provides an abstracted account model and abstracted layer 2 transactions upon Nervos CKB.
 
-Polyjuice(https://github.com/nervosnetwork/godwoken-polyjuice) is a Ethereum compatible layer designed upon Godwoken account model. Godwoken comes with Polyjuice gives developers the ability to seamlessly deploy & run Ethereum contracts.
+Polyjuice(https://github.com/nervosnetwork/godwoken-polyjuice) is an Ethereum compatible layer designed upon the Godwoken account model. Godwoken comes together with Polyjuice giving developers the ability to seamlessly deploy & run Ethereum contracts.
 
 <img src={useBaseUrl("img/arch.png")}  width="40%"/>
 
@@ -820,13 +820,13 @@ For more information, see [Ethereum RPC (web3 RPC)](https://github.com/nervosnet
 
 ## Decentralization Roadmap
 
-We provide a solid roadmap to evolve the Godwoken network step in step from half-decentialization to fully-decentialization.
+We provide a solid roadmap to evolve the Godwoken network step by step from semi-decentialization to fully-decentialization.
 
-- **Stage 1 (initial lauch)**: The whole network has one sequencer to sort transactions. The developers can run their own Godwoken nodes in the readonly mode and watch the on-chain rollup transactions to compute and verify the rollup global state.
+- **Stage 1 (initial lauch)**: The whole network has one sequencer to sort transactions. Developers can run their own Godwoken nodes in the readonly mode and watch the on-chain rollup transactions to compute and verify the rollup global state.
 
-- **Stage 2**: The network will introduce permission-less challenger node, everyone can run their Godwoken nodes in challenger mode. If the sequencer commits an invalid state, then, a challenging will be automatically processed by a random Godwoken node (it depends on which node send the challenging first). If the challenging is successed, then the sequencer will lose staked assets on layer1 and the rollup's state will be reverted.
+- **Stage 2**: The network will introduce permission-less challenger node, everyone can run their Godwoken nodes in challenger mode. If the sequencer commits an invalid state, then, a challenging will be automatically processed by a random Godwoken node (depending on which node sends the challenging first) . If the challenging has successed, then the sequencer will lose staked assets on layer1 and the rollup's state will be reverted.
 
-- **Stage 3**: The nerwork will introduce permission-less full node, multiple sequencers mechanism will be investigated and explored.
+- **Stage 3**: The nerwork will introduce permission-less full node, multiple sequencer mechanism will be investigated and explored.
 
 ## References
 
