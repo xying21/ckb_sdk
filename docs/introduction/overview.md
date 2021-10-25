@@ -820,7 +820,7 @@ For more information, see [Ethereum RPC (web3 RPC)](https://github.com/nervosnet
 
 ## Decentralization Roadmap
 
-We provide a solid roadmap to evolve the Godwoken network step by step from semi-decentialization to fully-decentialization.
+We provide a solid roadmap to evolve the Godwoken network step by step from half-decentialization to fully-decentialization.
 
 - **Stage 1 (initial lauch)**: The whole network has one sequencer to sort transactions. Developers can run their own Godwoken nodes in the readonly mode and watch the on-chain rollup transactions to compute and verify the rollup global state.
 
