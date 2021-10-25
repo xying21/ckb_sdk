@@ -832,6 +832,7 @@ We provide a solid roadmap to evolve the Godwoken network step by step from semi
 
 | Resource                          | Link                                                         |
 | --------------------------------- | ------------------------------------------------------------ |
+| Nervos' Layer 2 EVM Training      | https://nervos.gitbook.io/layer-2-evm/
 | Nervos&nbsp;Document&nbsp;Website | https://docs.nervos.org/                                     |
 | Godwoken Basics                   | <ul><li>[Introducing Godwoken - A missing piece of the cell model](https://talk.nervos.org/t/introducing-godwoken-a-missing-piece-of-the-cell-model/4464?_360safeparam=13594453)</li><li>[Towards CKB style Lego pieces: Polyjuice on Godwoken](https://medium.com/nervosnetwork/towards-ckb-style-lego-pieces-polyjuice-on-godwoken-cbc935d77abf)</li></ul> |
 | Source&nbsp;Code                  | https://github.com/nervosnetwork/lumos                       |
